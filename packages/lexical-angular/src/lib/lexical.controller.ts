@@ -1,7 +1,7 @@
 import {Injectable, OnDestroy} from '@angular/core';
 import {LexicalComposerDirective} from 'lexical-angular';
 import {LexicalEditor} from 'lexical';
-import {ReplaySubject} from 'rxjs';
+import {Observable, ReplaySubject} from 'rxjs';
 
 @Injectable()
 export class LexicalController implements OnDestroy {
@@ -15,6 +15,10 @@ export class LexicalController implements OnDestroy {
   }
 
   constructor(private readonly lexical: LexicalComposerDirective) {}
+
+  readonly readOnly$ = new Observable<boolean>(observer =>
+    this.editor.registerReadOnlyListener(readOnly => observer.next(readOnly))
+  );
 
   ngOnDestroy(): void {
     this.destroy$.next();
