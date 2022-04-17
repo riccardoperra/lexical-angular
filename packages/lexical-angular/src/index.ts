@@ -4,3 +4,6 @@ export * from './lib/lexical-composer.directive';
 
 export * from './lib/plugins/autofocus';
 export * from './lib/plugins/on-change';
+export * from './lib/plugins/content-editable';
+export * from './lib/plugins/placeholder';
+export * from './lib/plugins/plain-text';
