@@ -20,6 +20,7 @@
     "@angular/language-service": "~13.3.0",
     "@changesets/cli": "^2.22.0",
     "@lexical/link": "^0.2.1",
+    "@lexical/list": "^0.2.1",
     "@nrwl/cli": "13.10.2",
     "@nrwl/cypress": "13.10.2",
     "@nrwl/eslint-plugin-nx": "13.10.2",
