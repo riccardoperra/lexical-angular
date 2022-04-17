@@ -23,6 +23,7 @@ importers:
       '@lexical/clipboard': ^0.2.1
       '@lexical/dragon': ^0.2.1
       '@lexical/link': ^0.2.1
+      '@lexical/list': ^0.2.1
       '@lexical/plain-text': ^0.2.1
       '@lexical/rich-text': ^0.2.1
       '@lexical/selection': ^0.2.1
@@ -90,6 +91,7 @@ importers:
       '@angular/language-service': 13.3.3
       '@changesets/cli': 2.22.0
       '@lexical/link': 0.2.1_lexical@0.2.1
+      '@lexical/list': 0.2.1_lexical@0.2.1
       '@nrwl/cli': 13.10.2
       '@nrwl/cypress': 13.10.2_aca0d45dac6784dbb09298dce8ee6825
       '@nrwl/eslint-plugin-nx': 13.10.2_2c3062e5764a0c62076d4994ea51d4d4
