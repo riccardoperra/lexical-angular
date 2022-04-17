@@ -5,4 +5,4 @@ import {NgModule} from '@angular/core';
   exports: [LexicalLinkDirective],
   declarations: [LexicalLinkDirective],
 })
-export class LexicalLinkPluginDirective {}
+export class LexicalLinkPluginModule {}

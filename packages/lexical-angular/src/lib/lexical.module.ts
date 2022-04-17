@@ -7,7 +7,8 @@ import {LexicalOnChangePluginModule} from './plugins/on-change';
 import {LexicalPlaceholderPluginModule} from './plugins/placeholder';
 import {LexicalPlainTextPluginModule} from './plugins/plain-text';
 import {LexicalRichTextPluginModule} from './plugins/rich-text';
-import {LexicalLinkPluginDirective} from './plugins/link';
+import {LexicalLinkPluginModule} from './plugins/link';
+import {LexicalClearEditorPluginModule} from './plugins/clear';
 
 const PLUGINS = [
   LexicalAutofocusPluginModule,
@@ -16,7 +17,8 @@ const PLUGINS = [
   LexicalPlaceholderPluginModule,
   LexicalPlainTextPluginModule,
   LexicalRichTextPluginModule,
-  LexicalLinkPluginDirective,
+  LexicalLinkPluginModule,
+  LexicalClearEditorPluginModule,
 ];
 
 @NgModule({
