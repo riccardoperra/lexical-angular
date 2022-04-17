@@ -3,3 +3,4 @@ export * from './lib/lexical.controller';
 export * from './lib/lexical-composer.directive';
 
 export * from './lib/plugins/autofocus';
+export * from './lib/plugins/on-change';
