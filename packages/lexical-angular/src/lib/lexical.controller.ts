@@ -1,5 +1,4 @@
 import {Injectable, OnDestroy} from '@angular/core';
-import {LexicalComposerDirective} from 'lexical-angular';
 import {
   CommandListener,
   CommandListenerPriority,
@@ -8,6 +7,7 @@ import {
   UpdateListener,
 } from 'lexical';
 import {Observable, ReplaySubject} from 'rxjs';
+import { LexicalComposerDirective } from './lexical-composer.directive';
 
 @Injectable()
 export class LexicalController implements OnDestroy {
