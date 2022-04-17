@@ -22,6 +22,7 @@ importers:
       '@changesets/cli': ^2.22.0
       '@lexical/clipboard': ^0.2.1
       '@lexical/dragon': ^0.2.1
+      '@lexical/link': ^0.2.1
       '@lexical/plain-text': ^0.2.1
       '@lexical/rich-text': ^0.2.1
       '@lexical/selection': ^0.2.1
@@ -88,6 +89,7 @@ importers:
       '@angular/compiler-cli': 13.3.3_38de2c22041dec8c84ce012de55b5390
       '@angular/language-service': 13.3.3
       '@changesets/cli': 2.22.0
+      '@lexical/link': 0.2.1_lexical@0.2.1
       '@nrwl/cli': 13.10.2
       '@nrwl/cypress': 13.10.2_aca0d45dac6784dbb09298dce8ee6825
       '@nrwl/eslint-plugin-nx': 13.10.2_2c3062e5764a0c62076d4994ea51d4d4
@@ -2474,6 +2476,15 @@ packages:
       lexical: 0.2.1
     dev: false
 
+  /@lexical/link/0.2.1_lexical@0.2.1:
+    resolution: {integrity: sha512-91eID3LUVj07epPI98MhSVXlqMhbmPHFi/khaekYfx+STtMKMVyiPf9txxsVUKIgajfCopWSVUqu9ZdT+R7ZnQ==}
+    peerDependencies:
+      lexical: 0.2.1
+    dependencies:
+      '@lexical/utils': 0.2.1_lexical@0.2.1
+      lexical: 0.2.1
+    dev: true
+
   /@lexical/list/0.2.1_lexical@0.2.1:
     resolution: {integrity: sha512-jRly4P0ClYZtKDXzmhPaDBFXYlTqXc2XooqKjdYff/0TLoVaMdZJJL4YrbBsFSIFhwuMTeb4qJNRaFLca49xhg==}
     peerDependencies:
@@ -2481,7 +2492,6 @@ packages:
     dependencies:
       '@lexical/utils': 0.2.1_lexical@0.2.1
       lexical: 0.2.1
-    dev: false
 
   /@lexical/plain-text/0.2.1_76d8601950cd7390a6185da6aac3b1bf:
     resolution: {integrity: sha512-OP3GwRbjNSihrCF5D/TWL83YeNMuLI3y+Hk+Ezgl/Zc30uyCVSeKYn8zozu6cillVtSrOQDtv8D96AM0VytKnw==}
@@ -2526,7 +2536,6 @@ packages:
     dependencies:
       '@lexical/utils': 0.2.1_lexical@0.2.1
       lexical: 0.2.1
-    dev: false
 
   /@lexical/text/0.2.1_lexical@0.2.1:
     resolution: {integrity: sha512-5x3TvlXw7HJjHLbgYcwkJPc9TVs755BhGH8k9C6lFFUlk28wEzSRBFkna9CchrVqF52jDjJKLu6+hkIGNdsYbg==}
@@ -2544,7 +2553,6 @@ packages:
       '@lexical/list': 0.2.1_lexical@0.2.1
       '@lexical/table': 0.2.1_lexical@0.2.1
       lexical: 0.2.1
-    dev: false
 
   /@manypkg/find-root/1.1.0:
     resolution: {integrity: sha512-mki5uBvhHzO8kYYix/WRy2WX8S3B5wdVSc9D6KcU5lQNglP2yt58/VfLuAK49glRXChosY8ap2oJ1qgma3GUVA==}

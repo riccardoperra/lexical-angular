@@ -1,6 +1,12 @@
 import {Injectable, OnDestroy} from '@angular/core';
 import {LexicalComposerDirective} from 'lexical-angular';
-import {LexicalEditor, UpdateListener} from 'lexical';
+import {
+  CommandListener,
+  CommandListenerPriority,
+  LexicalCommand,
+  LexicalEditor,
+  UpdateListener,
+} from 'lexical';
 import {Observable, ReplaySubject} from 'rxjs';
 
 @Injectable()
@@ -23,6 +29,22 @@ export class LexicalController implements OnDestroy {
   readonly onUpdate$ = new Observable<Parameters<UpdateListener>[0]>(observer =>
     this.editor.registerUpdateListener(listener => observer.next(listener))
   );
+
+  registerCommand<P>(
+    command: LexicalCommand<P>,
+    priority: CommandListenerPriority
+  ): Observable<Parameters<CommandListener<P>>> {
+    return new Observable<Parameters<CommandListener<P>>>(observer => {
+      return this.editor.registerCommand<P>(
+        command,
+        (...args) => {
+          observer.next(args);
+          return true;
+        },
+        priority
+      );
+    });
+  }
 
   ngOnDestroy(): void {
     this.destroy$.next();
