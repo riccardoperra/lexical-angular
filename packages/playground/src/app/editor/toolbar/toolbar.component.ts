@@ -32,7 +32,6 @@ import {$getNearestNodeOfType} from '@lexical/utils';
 import {$isHeadingNode, HeadingNode} from '@lexical/rich-text';
 import {defer, map, startWith} from 'rxjs';
 import {TUI_BUTTON_OPTIONS, TuiButtonOptions} from '@taiga-ui/core';
-import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 import {LexicalFloatingLinkEditorComponent} from './floating-link-editor/floating-link-editor.component';
 
 @Component({
@@ -85,10 +84,7 @@ export class LexicalToolbarComponent implements AfterViewInit {
   isCode = false;
   isRTL = false;
 
-  readonly floatingLinkEditor = new PolymorpheusComponent(
-    LexicalFloatingLinkEditorComponent,
-    this.injector
-  );
+  readonly floatingLinkEditor = LexicalFloatingLinkEditorComponent;
 
   readonly canUndo$ = defer(() =>
     this.controller

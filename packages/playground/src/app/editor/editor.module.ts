@@ -12,7 +12,6 @@ import {
   TuiHintModule,
   TuiHostedDropdownModule,
   TuiLinkModule,
-  TuiPrimitiveTextfieldModule,
   TuiTextfieldControllerModule,
   TuiWrapperModule,
 } from '@taiga-ui/core';
@@ -24,7 +23,6 @@ import {
 } from '@taiga-ui/kit';
 import {LexicalListPluginModule} from '../../../../lexical-angular/src/lib/plugins/list';
 import {LexicalFloatingLinkEditorComponent} from './toolbar/floating-link-editor/floating-link-editor.component';
-import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 import {TuiAutoFocusModule} from '@taiga-ui/cdk';
 
 @NgModule({
@@ -43,11 +41,9 @@ import {TuiAutoFocusModule} from '@taiga-ui/cdk';
     LexicalListPluginModule,
     ReactiveFormsModule,
     TuiHintModule,
-    PolymorpheusModule,
     TuiInputModule,
     TuiAutoFocusModule,
     TuiWrapperModule,
-    TuiPrimitiveTextfieldModule,
     TuiLinkModule,
   ],
   exports: [PlaygroundEditorComponent],
