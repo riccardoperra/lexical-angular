@@ -9,7 +9,6 @@ import {LexicalController} from '../../lexical.controller';
 import {EditorState} from 'lexical';
 import {mergeRegister} from '@lexical/utils';
 import {registerPlainText} from '@lexical/plain-text';
-// @ts-expect-error: Fix type - Lexical dragon is not esm
 import {registerDragonSupport} from '@lexical/dragon';
 import {Unsubscribable} from 'rxjs';
 
