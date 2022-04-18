@@ -54,7 +54,37 @@
       ></tui-data-list-wrapper>
     </tui-select>
   </div>
+
   <div class='divider'></div>
 
+  <button
+    class='toolbar-item'
+    [class.active]='isBold'
+    (click)='onSetBold()'>
+    <i class='format bold'></i>
+  </button>
+
+  <button
+    class='toolbar-item'
+    [class.active]='isItalic'
+    (click)='onSetItalic()'>
+    <i class='format italic'></i>
+  </button>
+
+  <button
+    class='toolbar-item'
+    [class.active]='isUnderline'
+    (click)='onSetUnderline()'>
+    <i class='format underline'></i>
+  </button>
+
+  <button
+    class='toolbar-item'
+    [class.active]='isStrikethrough'
+    (click)='onSetStrikethrough()'>
+    <i class='format strikethrough'></i>
+  </button>
+
+  <div class='divider'></div>
 
 </div>

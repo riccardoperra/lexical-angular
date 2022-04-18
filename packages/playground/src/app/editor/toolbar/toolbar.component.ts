@@ -6,6 +6,7 @@ import {
   $isRangeSelection,
   CAN_REDO_COMMAND,
   CAN_UNDO_COMMAND,
+  FORMAT_TEXT_COMMAND,
   RangeSelection,
   REDO_COMMAND,
   UNDO_COMMAND,
@@ -118,6 +119,25 @@ export class LexicalToolbarComponent implements AfterViewInit {
 
   onRedo(): void {
     this.controller.editor.dispatchCommand(REDO_COMMAND, null);
+  }
+
+  onSetBold(): void {
+    this.controller.editor.dispatchCommand(FORMAT_TEXT_COMMAND, 'bold');
+  }
+
+  onSetItalic(): void {
+    this.controller.editor.dispatchCommand(FORMAT_TEXT_COMMAND, 'italic');
+  }
+
+  onSetUnderline(): void {
+    this.controller.editor.dispatchCommand(FORMAT_TEXT_COMMAND, 'underline');
+  }
+
+  onSetStrikethrough(): void {
+    this.controller.editor.dispatchCommand(
+      FORMAT_TEXT_COMMAND,
+      'strikethrough'
+    );
   }
 
   onFontFamilySelect(fontFamily: string): void {
