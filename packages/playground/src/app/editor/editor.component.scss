@@ -288,7 +288,7 @@
   min-width: 100px;
   width: auto;
 
-  &:not(._focused) {
+  &:not(._focused):not(._hovered) {
     tui-wrapper[data-appearance='textfield'] {
       box-shadow: none;
 
