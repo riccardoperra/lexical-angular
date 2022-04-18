@@ -42,7 +42,12 @@ import {$isLinkNode, LinkNode, TOGGLE_LINK_COMMAND} from '@lexical/link';
       </ng-container>
       <ng-template #content>
         <div class="p-3" tuiWrapper appearance="textfield">
-          <a tuiLink [href]="linkUrl" target="_blank" rel="noopener noreferrer">
+          <a
+            tuiLink
+            [href]="linkUrl.value"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             {{ linkUrl.value }}
           </a>
           <div
