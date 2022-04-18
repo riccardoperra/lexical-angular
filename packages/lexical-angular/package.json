@@ -1,6 +1,24 @@
 {
   "name": "lexical-angular",
   "version": "0.0.2-beta.0",
+  "homepage": "https://lexical-angular-playground.vercel.app",
+  "bugs": "https://github.com/riccardoperra/lexical-angular/issues",
+  "keywords": [
+    "lexical",
+    "rich-text",
+    "editor"
+  ],
+  "contributors": [
+    {
+      "name": "Riccardo Perra",
+      "email": "riccardo.perra@icloud.com",
+      "url": "https://riccardoperra.com"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/riccardoperra/lexical-angular"
+  },
   "peerDependencies": {
     "@angular/common": "^13.3.0",
     "@angular/core": "^13.3.0"
