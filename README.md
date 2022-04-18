@@ -6,7 +6,8 @@
 
 For documentation and more information about Lexical, be sure to visit the Lexical website.
 
-[Angular playground](https://lexical-angular.vercel.app)
+[Lexical official documentation](https://lexical.dev)
+[Angular playground](https://lexical-angular-playground.vercel.app)
 
 ### Getting started with Angular
 
