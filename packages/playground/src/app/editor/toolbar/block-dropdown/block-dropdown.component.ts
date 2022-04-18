@@ -122,6 +122,8 @@ export class LexicalToolbarBlockDropdownComponent
   }
 
   onFormatHeading(headingSize: HeadingTagType) {
+    this.open = false;
+
     if (this.blockType !== headingSize) {
       this.controller.editor.update(() => {
         const selection = $getSelection();
@@ -138,6 +140,8 @@ export class LexicalToolbarBlockDropdownComponent
   }
 
   onFormatBulletList() {
+    this.open = false;
+
     if (this.blockType !== 'ul') {
       this.controller.editor.dispatchCommand(
         INSERT_UNORDERED_LIST_COMMAND,
@@ -149,6 +153,8 @@ export class LexicalToolbarBlockDropdownComponent
   }
 
   onFormatNumberedList() {
+    this.open = false;
+
     if (this.blockType !== 'ol') {
       this.controller.editor.dispatchCommand(INSERT_ORDERED_LIST_COMMAND, null);
     } else {
@@ -157,6 +163,8 @@ export class LexicalToolbarBlockDropdownComponent
   }
 
   onFormatQuote() {
+    this.open = false;
+
     if (this.blockType !== 'quote') {
       this.controller.editor.update(() => {
         const selection = $getSelection();

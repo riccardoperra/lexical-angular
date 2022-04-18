@@ -2,7 +2,7 @@
   <button
     class='toolbar-item spaced'
     aria-label='Undo'
-    [disabled]='!canUndo'
+    [disabled]='!(canUndo$ | async)'
     (click)='onUndo()'
   >
     <i class='format undo'></i>
@@ -11,7 +11,7 @@
   <button
     class='toolbar-item'
     aria-label='Redo'
-    [disabled]='!canRedo'
+    [disabled]='!(canRedo$ | async)'
     (click)='onRedo()'
   >
     <i class='format redo'></i>
@@ -29,7 +29,7 @@
   <tui-select
     [ngModel]='fontFamily'
     (ngModelChange)='onFontFamilySelect($event)'
-    tuiTextfieldSize="s">
+    tuiTextfieldSize='s'>
 
     <input
       tuiTextfield

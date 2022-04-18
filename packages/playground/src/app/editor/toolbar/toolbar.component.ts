@@ -1,14 +1,10 @@
-import {
-  AfterViewInit,
-  ChangeDetectionStrategy,
-  Component,
-  OnInit,
-} from '@angular/core';
+import {AfterViewInit, ChangeDetectionStrategy, Component} from '@angular/core';
 import {LexicalController} from 'lexical-angular';
 import {EditorBlockTypes, supportedBlockTypes} from './blocks';
 import {
   $getSelection,
   $isRangeSelection,
+  CAN_UNDO_COMMAND,
   RangeSelection,
   REDO_COMMAND,
   UNDO_COMMAND,
@@ -23,6 +19,8 @@ import {$isLinkNode} from '@lexical/link';
 import {$isListNode, ListNode} from '@lexical/list';
 import {$getNearestNodeOfType} from '@lexical/utils';
 import {$isHeadingNode, HeadingNode} from '@lexical/rich-text';
+import {defer, map, startWith} from 'rxjs';
+import {COMMAND_PRIORITY_CRITICAL} from 'lexical-angular';
 
 @Component({
   selector: 'lxc-toolbar',
@@ -40,9 +38,33 @@ export class LexicalToolbarComponent implements AfterViewInit {
   isUnderline = false;
   isStrikethrough = false;
   isCode = false;
-  canUndo = false;
-  canRedo = false;
   isRTL = false;
+
+  readonly canUndo$ = defer(() =>
+    this.controller
+      .registerCommand(
+        CAN_UNDO_COMMAND,
+        (payload: boolean) => false,
+        COMMAND_PRIORITY_CRITICAL
+      )
+      .pipe(
+        map(([canUndo]) => canUndo),
+        startWith(false)
+      )
+  );
+
+  readonly canRedo$ = defer(() =>
+    this.controller
+      .registerCommand(
+        CAN_UNDO_COMMAND,
+        (payload: boolean) => false,
+        COMMAND_PRIORITY_CRITICAL
+      )
+      .pipe(
+        map(([canRedo]) => canRedo),
+        startWith(false)
+      )
+  );
 
   constructor(private readonly controller: LexicalController) {}
 

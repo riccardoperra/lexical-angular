@@ -7,7 +7,7 @@ import {
   UpdateListener,
 } from 'lexical';
 import {Observable, ReplaySubject} from 'rxjs';
-import { LexicalComposerDirective } from './lexical-composer.directive';
+import {LexicalComposerDirective} from './lexical-composer.directive';
 
 @Injectable()
 export class LexicalController implements OnDestroy {
@@ -32,6 +32,7 @@ export class LexicalController implements OnDestroy {
 
   registerCommand<P>(
     command: LexicalCommand<P>,
+    listener: CommandListener<P>,
     priority: CommandListenerPriority
   ): Observable<Parameters<CommandListener<P>>> {
     return new Observable<Parameters<CommandListener<P>>>(observer => {
@@ -39,7 +40,7 @@ export class LexicalController implements OnDestroy {
         command,
         (...args) => {
           observer.next(args);
-          return true;
+          return command(...args);
         },
         priority
       );

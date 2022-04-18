@@ -25,6 +25,7 @@ export class LexicalLinkDirective implements OnInit, OnDestroy {
     this.controller
       .registerCommand<string | null>(
         TOGGLE_LINK_COMMAND,
+        () => true,
         COMMAND_PRIORITY_EDITOR
       )
       .pipe(takeUntil(merge(this.destroy$, destroy$)))
