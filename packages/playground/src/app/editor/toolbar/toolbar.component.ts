@@ -1,4 +1,9 @@
-import {AfterViewInit, ChangeDetectionStrategy, Component} from '@angular/core';
+import {
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  Component,
+  Injector,
+} from '@angular/core';
 import {COMMAND_PRIORITY_CRITICAL, LexicalController} from 'lexical-angular';
 import {EditorBlockTypes, supportedBlockTypes} from './blocks';
 import {
@@ -21,12 +26,14 @@ import {
   $patchStyleText,
 } from '@lexical/selection';
 import {getSelectedNode} from './helpers';
-import {$isLinkNode} from '@lexical/link';
+import {$isLinkNode, TOGGLE_LINK_COMMAND} from '@lexical/link';
 import {$isListNode, ListNode} from '@lexical/list';
 import {$getNearestNodeOfType} from '@lexical/utils';
 import {$isHeadingNode, HeadingNode} from '@lexical/rich-text';
 import {defer, map, startWith} from 'rxjs';
 import {TUI_BUTTON_OPTIONS, TuiButtonOptions} from '@taiga-ui/core';
+import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
+import {LexicalFloatingLinkEditorComponent} from './floating-link-editor/floating-link-editor.component';
 
 @Component({
   selector: 'lxc-toolbar',
@@ -78,6 +85,11 @@ export class LexicalToolbarComponent implements AfterViewInit {
   isCode = false;
   isRTL = false;
 
+  readonly floatingLinkEditor = new PolymorpheusComponent(
+    LexicalFloatingLinkEditorComponent,
+    this.injector
+  );
+
   readonly canUndo$ = defer(() =>
     this.controller
       .registerCommand(
@@ -104,7 +116,10 @@ export class LexicalToolbarComponent implements AfterViewInit {
       )
   );
 
-  constructor(private readonly controller: LexicalController) {}
+  constructor(
+    private readonly controller: LexicalController,
+    private readonly injector: Injector
+  ) {}
 
   get showBlockTypeFormat(): boolean {
     return supportedBlockTypes.has(this.blockType);
@@ -153,6 +168,14 @@ export class LexicalToolbarComponent implements AfterViewInit {
 
   onIndent(): void {
     this.controller.editor.dispatchCommand(INDENT_CONTENT_COMMAND, null);
+  }
+
+  onInsertLink(): void {
+    if (!this.isLink) {
+      this.controller.editor.dispatchCommand(TOGGLE_LINK_COMMAND, 'https://');
+    } else {
+      this.controller.editor.dispatchCommand(TOGGLE_LINK_COMMAND, null);
+    }
   }
 
   onFontFamilySelect(fontFamily: string): void {

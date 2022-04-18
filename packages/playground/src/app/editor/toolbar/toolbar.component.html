@@ -89,6 +89,19 @@
     <i class='format strikethrough'></i>
   </button>
 
+  <button
+    class='toolbar-item'
+    tuiHint='Strikethrough'
+    [class.active]='isLink'
+    (click)='onInsertLink()'>
+    <i class='format link'></i>
+  </button>
+  <ng-container
+    *ngIf='isLink'
+    [ngComponentOutlet]='floatingLinkEditor.component'>
+  </ng-container>
+
+
   <div class='divider'></div>
 
   <button
