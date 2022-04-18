@@ -6,7 +6,7 @@
 
 For documentation and more information about Lexical, be sure to visit the Lexical website.
 
-[Lexical official documentation](https://lexical.dev)
+[Lexical official documentation](https://lexical.dev) \
 [Angular playground](https://lexical-angular-playground.vercel.app)
 
 ### Getting started with Angular
@@ -16,16 +16,14 @@ For documentation and more information about Lexical, be sure to visit the Lexic
 Install `lexical` and `lexical-angular`
 
 ```bash
-pnpm i lexical lexical-angular # pnpm
-yarn add lexical lexical-angular #yarn
-npm i lexical lexical-angular #npm
+pnpm i lexical lexical-angular # or npm or yarn
 ```
 
 Below is an example of a basic plain text editor using lexical and lexical-angular.
 
 ```typescript
-import { LexicalComposerConfig } from 'lexical-angular';
 import { FormControl } from '@angular/forms';
+import { LexicalComposerConfig } from 'lexical-angular';
 import { EditorState } from 'lexical';
 
 @Component({
