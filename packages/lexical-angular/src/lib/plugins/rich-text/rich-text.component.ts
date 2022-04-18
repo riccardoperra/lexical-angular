@@ -22,6 +22,7 @@ export type LexicalRichTextInitialState =
 @Component({
   selector: '[lexicalRichText]',
   template: `
+    <ng-content></ng-content>
     <ng-content select="[lexicalContentEditable]"></ng-content>
     <ng-content select="[lexicalPlaceholder]"></ng-content>
     <!-- TODO: add integration -->
