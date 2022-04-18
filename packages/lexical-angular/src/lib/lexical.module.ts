@@ -10,19 +10,19 @@ import {LexicalRichTextPluginModule} from './plugins/rich-text';
 import {LexicalLinkPluginModule} from './plugins/link';
 import {LexicalClearEditorPluginModule} from './plugins/clear';
 import {LexicalHistoryPluginModule} from './plugins/history';
-import {LexicalControlValueAccessorPluginModule} from './plugins/control-value-accessor/control-value-accessor.module';
+import {LexicalControlValueAccessorPluginModule} from './plugins/control-value-accessor';
 
 const PLUGINS = [
   LexicalAutofocusPluginModule,
-  LexicalOnChangePluginModule,
+  LexicalClearEditorPluginModule,
   LexicalContentEditablePluginModule,
+  LexicalControlValueAccessorPluginModule,
+  LexicalHistoryPluginModule,
+  LexicalLinkPluginModule,
+  LexicalOnChangePluginModule,
   LexicalPlaceholderPluginModule,
   LexicalPlainTextPluginModule,
   LexicalRichTextPluginModule,
-  LexicalLinkPluginModule,
-  LexicalClearEditorPluginModule,
-  LexicalHistoryPluginModule,
-  LexicalControlValueAccessorPluginModule,
 ];
 
 @NgModule({

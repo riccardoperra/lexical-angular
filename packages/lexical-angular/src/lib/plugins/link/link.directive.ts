@@ -3,12 +3,7 @@ import {LexicalController} from '../../lexical.controller';
 import {LinkNode, TOGGLE_LINK_COMMAND} from '@lexical/link';
 import {merge, Subject, takeUntil} from 'rxjs';
 import {toggleLink} from './toggle-link';
-
-export type LexicalCharset = 'UTF-8' | 'UTF-16';
-
-// TODO: Not available in lexical 0.2.1
-// https://github.com/facebook/lexical/blob/main/packages/lexical/src/LexicalEditor.js
-export const COMMAND_PRIORITY_EDITOR = 0;
+import {COMMAND_PRIORITY_EDITOR} from '../../constants/priorities';
 
 @Directive({selector: '[lexicalComposer][lexicalLink]'})
 export class LexicalLinkDirective implements OnInit, OnDestroy {
