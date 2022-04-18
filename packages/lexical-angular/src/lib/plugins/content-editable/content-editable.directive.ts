@@ -9,7 +9,7 @@ import {
   OnInit,
 } from '@angular/core';
 import {LexicalController} from '../../lexical.controller';
-import {Subject, takeUntil} from 'rxjs';
+import {startWith, Subject, takeUntil} from 'rxjs';
 
 @Directive({selector: 'div[lexicalContentEditable]'})
 export class LexicalContentEditableDirective implements OnInit, OnDestroy {
@@ -137,7 +137,10 @@ export class LexicalContentEditableDirective implements OnInit, OnDestroy {
     this.controller.editor.setRootElement(this.elementRef.nativeElement);
 
     this.controller.readOnly$
-      .pipe(takeUntil(this.destroy$))
+      .pipe(
+        startWith(this.controller.editor.isReadOnly()),
+        takeUntil(this.destroy$)
+      )
       .subscribe(readOnly => {
         this.computedReadOnly = readOnly;
         this.changeDetectorRef.markForCheck();

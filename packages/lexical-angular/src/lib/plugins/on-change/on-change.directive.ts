@@ -10,7 +10,7 @@ import {LexicalController} from '../../lexical.controller';
 import {EditorState} from 'lexical';
 import {Unsubscribable} from 'rxjs';
 
-@Directive({selector: '[lexicalComposer]'})
+@Directive({selector: '[lexicalComposer][lexicalChangeEvent]'})
 export class LexicalOnChangeDirective implements OnInit, OnDestroy {
   @Input()
   ignoreInitialChange: boolean = true;

@@ -41,8 +41,11 @@ export class LexicalPlaceholderDirective implements OnInit, OnDestroy {
         takeUntil(this.destroy$)
       )
       .subscribe(show => {
-        if (!show) this.viewContainerRef.clear();
-        this.viewContainerRef.createEmbeddedView(this.templateRef);
+        if (!show) {
+          this.viewContainerRef.clear();
+        } else {
+          this.viewContainerRef.createEmbeddedView(this.templateRef);
+        }
       });
   }
 
