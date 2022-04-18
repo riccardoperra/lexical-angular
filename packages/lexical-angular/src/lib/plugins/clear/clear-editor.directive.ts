@@ -13,8 +13,8 @@ import {
   $getRoot,
   $getSelection,
   CLEAR_EDITOR_COMMAND,
+  COMMAND_PRIORITY_EDITOR,
 } from 'lexical';
-import {COMMAND_PRIORITY_EDITOR} from '../../constants/priorities';
 
 @Directive({selector: '[lexicalClearEditor]'})
 export class LexicalClearEditorDirective implements OnInit, OnDestroy {

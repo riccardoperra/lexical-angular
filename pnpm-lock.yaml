@@ -52,7 +52,7 @@ importers:
       eslint-config-prettier: 8.1.0
       jest: 27.2.3
       jest-preset-angular: 11.1.1
-      lexical: ^0.2.1
+      lexical: ^0.2.2
       ng-packagr: ^13.0.0
       nx: 13.10.2
       postcss: ^8.4.12
@@ -75,18 +75,18 @@ importers:
       '@angular/platform-browser': 13.3.3_4e8562e2932817d6a0942f70d0c5613e
       '@angular/platform-browser-dynamic': 13.3.3_1e5bac97400efcb0772ac82894f9a700
       '@angular/router': 13.3.3_89dda07bd34b101a2fc13e17ab4e39c3
-      '@lexical/clipboard': 0.2.2_lexical@0.2.1
-      '@lexical/dragon': 0.2.2_lexical@0.2.1
-      '@lexical/history': 0.2.2_lexical@0.2.1
-      '@lexical/link': 0.2.2_lexical@0.2.1
-      '@lexical/list': 0.2.2_lexical@0.2.1
-      '@lexical/plain-text': 0.2.2_82ef1fd6d74335dc96a149f358aed5e7
-      '@lexical/rich-text': 0.2.2_82ef1fd6d74335dc96a149f358aed5e7
-      '@lexical/selection': 0.2.2_lexical@0.2.1
-      '@lexical/text': 0.2.2_lexical@0.2.1
-      '@lexical/utils': 0.2.2_lexical@0.2.1
+      '@lexical/clipboard': 0.2.2_lexical@0.2.2
+      '@lexical/dragon': 0.2.2_lexical@0.2.2
+      '@lexical/history': 0.2.2_lexical@0.2.2
+      '@lexical/link': 0.2.2_lexical@0.2.2
+      '@lexical/list': 0.2.2_lexical@0.2.2
+      '@lexical/plain-text': 0.2.2_0c89b5108da90494d887a885f7be6ce4
+      '@lexical/rich-text': 0.2.2_0c89b5108da90494d887a885f7be6ce4
+      '@lexical/selection': 0.2.2_lexical@0.2.2
+      '@lexical/text': 0.2.2_lexical@0.2.2
+      '@lexical/utils': 0.2.2_lexical@0.2.2
       '@nrwl/angular': 13.10.2_8171ef22c5df18d245e45857b8a7e386
-      lexical: 0.2.1
+      lexical: 0.2.2
       rxjs: 7.4.0
       tslib: 2.3.1
       zone.js: 0.11.5
@@ -2491,52 +2491,52 @@ packages:
       '@jridgewell/resolve-uri': 3.0.5
       '@jridgewell/sourcemap-codec': 1.4.11
 
-  /@lexical/clipboard/0.2.2_lexical@0.2.1:
+  /@lexical/clipboard/0.2.2_lexical@0.2.2:
     resolution: {integrity: sha512-05ED9muPdNFY7ly9HSzRWB+NhZgPRYDm64w+b5MOqaKlW5vp4xL9gU6jGhe54eyY+pQ+uNGVTGig+zHMllN5yg==}
     peerDependencies:
       lexical: 0.2.2
     dependencies:
-      '@lexical/selection': 0.2.2_lexical@0.2.1
-      '@lexical/utils': 0.2.2_lexical@0.2.1
-      lexical: 0.2.1
+      '@lexical/selection': 0.2.2_lexical@0.2.2
+      '@lexical/utils': 0.2.2_lexical@0.2.2
+      lexical: 0.2.2
     dev: false
 
-  /@lexical/dragon/0.2.2_lexical@0.2.1:
+  /@lexical/dragon/0.2.2_lexical@0.2.2:
     resolution: {integrity: sha512-wSh/8Uw+F40ienLG2edIlOX7zHgiaxpsLr7AyPHIa0QULCVcSMdSOD/kHzg64WqKdczaRbNAvifQC4fMBP2Sag==}
     peerDependencies:
       lexical: 0.2.2
     dependencies:
-      lexical: 0.2.1
+      lexical: 0.2.2
     dev: false
 
-  /@lexical/history/0.2.2_lexical@0.2.1:
+  /@lexical/history/0.2.2_lexical@0.2.2:
     resolution: {integrity: sha512-MwOiL1a1pXWG4bEQyiIz4mjz0MZ4YHO8E8pbkDAwm8rMX4yMReshBYi4GAfskhPmeDmWOhgqYfYgqHPbxGTPVg==}
     peerDependencies:
       lexical: 0.2.2
     dependencies:
-      '@lexical/utils': 0.2.2_lexical@0.2.1
-      lexical: 0.2.1
+      '@lexical/utils': 0.2.2_lexical@0.2.2
+      lexical: 0.2.2
     dev: false
 
-  /@lexical/link/0.2.2_lexical@0.2.1:
+  /@lexical/link/0.2.2_lexical@0.2.2:
     resolution: {integrity: sha512-urui5yqqLZELJR5K8BCpkZkMWYLpKSGPjabftqec6B1ojyruRhClckW29D/9ebpVunbsahflMm/XdLtB9muWkg==}
     peerDependencies:
       lexical: 0.2.2
     dependencies:
-      '@lexical/utils': 0.2.2_lexical@0.2.1
-      lexical: 0.2.1
+      '@lexical/utils': 0.2.2_lexical@0.2.2
+      lexical: 0.2.2
     dev: false
 
-  /@lexical/list/0.2.2_lexical@0.2.1:
+  /@lexical/list/0.2.2_lexical@0.2.2:
     resolution: {integrity: sha512-sS2aCTLsPPH61sOAEwqeXLixkNWgKn+LS4QY6qXnKc437li6+sX5aBx3AythKUkCxsHrR3o+rcQzh7tHpW1Blg==}
     peerDependencies:
       lexical: 0.2.2
     dependencies:
-      '@lexical/utils': 0.2.2_lexical@0.2.1
-      lexical: 0.2.1
+      '@lexical/utils': 0.2.2_lexical@0.2.2
+      lexical: 0.2.2
     dev: false
 
-  /@lexical/plain-text/0.2.2_82ef1fd6d74335dc96a149f358aed5e7:
+  /@lexical/plain-text/0.2.2_0c89b5108da90494d887a885f7be6ce4:
     resolution: {integrity: sha512-HnPYDzdZNQG0bSxhvpxkJBngqirx9R7rYCShmZlucmyaY47g0sXozL695BOq5nfkOFXE9eKwisDHjk+FEXHIpg==}
     peerDependencies:
       '@lexical/clipboard': 0.2.2
@@ -2544,13 +2544,13 @@ packages:
       '@lexical/utils': 0.2.2
       lexical: 0.2.2
     dependencies:
-      '@lexical/clipboard': 0.2.2_lexical@0.2.1
-      '@lexical/selection': 0.2.2_lexical@0.2.1
-      '@lexical/utils': 0.2.2_lexical@0.2.1
-      lexical: 0.2.1
+      '@lexical/clipboard': 0.2.2_lexical@0.2.2
+      '@lexical/selection': 0.2.2_lexical@0.2.2
+      '@lexical/utils': 0.2.2_lexical@0.2.2
+      lexical: 0.2.2
     dev: false
 
-  /@lexical/rich-text/0.2.2_82ef1fd6d74335dc96a149f358aed5e7:
+  /@lexical/rich-text/0.2.2_0c89b5108da90494d887a885f7be6ce4:
     resolution: {integrity: sha512-uBb9ke5Om5BkGjwpsbZLp6T6UkZUuVkDvzV0fVhuRKYMRKL7eXuGrJVUM+ijNpTrlfSN81TN9OxculVpjC7rUQ==}
     peerDependencies:
       '@lexical/clipboard': 0.2.2
@@ -2558,45 +2558,45 @@ packages:
       '@lexical/utils': 0.2.2
       lexical: 0.2.2
     dependencies:
-      '@lexical/clipboard': 0.2.2_lexical@0.2.1
-      '@lexical/selection': 0.2.2_lexical@0.2.1
-      '@lexical/utils': 0.2.2_lexical@0.2.1
-      lexical: 0.2.1
+      '@lexical/clipboard': 0.2.2_lexical@0.2.2
+      '@lexical/selection': 0.2.2_lexical@0.2.2
+      '@lexical/utils': 0.2.2_lexical@0.2.2
+      lexical: 0.2.2
     dev: false
 
-  /@lexical/selection/0.2.2_lexical@0.2.1:
+  /@lexical/selection/0.2.2_lexical@0.2.2:
     resolution: {integrity: sha512-UQaEiLIxvBmluZprw2nc5uZyOzx+77nRD+7D5fJOa7FcVlBDVgatHNjDGf/uSd4ZyeUWdSWVDgPnjfC8FlmTqQ==}
     peerDependencies:
       lexical: 0.2.2
     dependencies:
-      lexical: 0.2.1
+      lexical: 0.2.2
     dev: false
 
-  /@lexical/table/0.2.2_lexical@0.2.1:
+  /@lexical/table/0.2.2_lexical@0.2.2:
     resolution: {integrity: sha512-fyJRdSiX6igeBNnY1mB12LCmBzXhji2z6nUjfI1AA1pIaozTxHfU9Cn4j7BhTn60uiRvDSQI0Gb3DSF50d70yg==}
     peerDependencies:
       lexical: 0.2.2
     dependencies:
-      '@lexical/utils': 0.2.2_lexical@0.2.1
-      lexical: 0.2.1
+      '@lexical/utils': 0.2.2_lexical@0.2.2
+      lexical: 0.2.2
     dev: false
 
-  /@lexical/text/0.2.2_lexical@0.2.1:
+  /@lexical/text/0.2.2_lexical@0.2.2:
     resolution: {integrity: sha512-gR+sH1rR7ytcDhRWge7HgP6txuFf9kbcmNnZkRkNfuQk+zQS0VxqgXjp4NU1ZIogJYZaXY6nJ6UgWwkXuXhSfg==}
     peerDependencies:
       lexical: 0.2.2
     dependencies:
-      lexical: 0.2.1
+      lexical: 0.2.2
     dev: false
 
-  /@lexical/utils/0.2.2_lexical@0.2.1:
+  /@lexical/utils/0.2.2_lexical@0.2.2:
     resolution: {integrity: sha512-/+kjbQU7Tnkl11NirZVKrRTq5b1DQllQ0frZgL9ZtVQAZxkxwOUQmF/rOGAUrbJv2INz45IpMtDR1mZf+x3jCQ==}
     peerDependencies:
       lexical: 0.2.2
     dependencies:
-      '@lexical/list': 0.2.2_lexical@0.2.1
-      '@lexical/table': 0.2.2_lexical@0.2.1
-      lexical: 0.2.1
+      '@lexical/list': 0.2.2_lexical@0.2.2
+      '@lexical/table': 0.2.2_lexical@0.2.2
+      lexical: 0.2.2
     dev: false
 
   /@manypkg/find-root/1.1.0:
@@ -8491,8 +8491,8 @@ packages:
       type-check: 0.4.0
     dev: true
 
-  /lexical/0.2.1:
-    resolution: {integrity: sha512-6GwyP+KByy6aMuS1Ri1fFD/7NHENnhEFutdT+4SGIZCau0RkzlUYz0izA7FPQHEn663w23h0op477UHvjzrJHQ==}
+  /lexical/0.2.2:
+    resolution: {integrity: sha512-Ga9iJKRmSlBzOFrsbLxXc0NNmU0LMeGod1qzU0QIUgVd0RRIaBNLb5c2mPuUUksK7QEq1hHqztofynWDhGNx6w==}
     dev: false
 
   /license-webpack-plugin/4.0.2_webpack@5.70.0:

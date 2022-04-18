@@ -6,6 +6,7 @@ import {
   INDENT_CONTENT_COMMAND,
   INSERT_PARAGRAPH_COMMAND,
   OUTDENT_CONTENT_COMMAND,
+  COMMAND_PRIORITY_LOW,
 } from 'lexical';
 import {
   $handleListInsertParagraph,
@@ -17,7 +18,6 @@ import {
   REMOVE_LIST_COMMAND,
   removeList,
 } from '@lexical/list';
-import {COMMAND_PRIORITY_LOW} from '../../constants/priorities';
 
 @Directive({selector: '[lexicalComposer][lexicalList]'})
 export class LexicalListDirective implements OnInit, OnDestroy {

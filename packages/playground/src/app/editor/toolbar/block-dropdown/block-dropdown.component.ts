@@ -9,6 +9,7 @@ import {
   $createParagraphNode,
   $getSelection,
   $isRangeSelection,
+  ElementNode,
   RangeSelection,
 } from 'lexical';
 import {$wrapLeafNodesInElements} from '@lexical/selection';
@@ -151,8 +152,8 @@ export class LexicalToolbarBlockDropdownComponent
         if ($isRangeSelection(selection)) {
           $wrapLeafNodesInElements(
             selection as RangeSelection,
-            // @ts-expect-error: TODO: lexical internal type
-            () => $createHeadingNode(headingSize)
+            // TODO: fix type
+            () => $createHeadingNode(headingSize) as unknown as ElementNode
           );
         }
       });
@@ -190,10 +191,8 @@ export class LexicalToolbarBlockDropdownComponent
         const selection = $getSelection();
 
         if ($isRangeSelection(selection)) {
-          $wrapLeafNodesInElements(
-            selection as RangeSelection,
-            // @ts-expect-error: TODO: lexical internal type
-            () => $createQuoteNode()
+          $wrapLeafNodesInElements(selection as RangeSelection, () =>
+            $createQuoteNode()
           );
         }
       });

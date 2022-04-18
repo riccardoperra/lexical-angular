@@ -4,13 +4,14 @@ import {
   Component,
   Injector,
 } from '@angular/core';
-import {COMMAND_PRIORITY_CRITICAL, LexicalController} from 'lexical-angular';
+import {LexicalController} from 'lexical-angular';
 import {EditorBlockTypes, supportedBlockTypes} from './blocks';
 import {
   $getSelection,
   $isRangeSelection,
   CAN_REDO_COMMAND,
   CAN_UNDO_COMMAND,
+  COMMAND_PRIORITY_CRITICAL,
   ElementFormatType,
   FORMAT_ELEMENT_COMMAND,
   FORMAT_TEXT_COMMAND,

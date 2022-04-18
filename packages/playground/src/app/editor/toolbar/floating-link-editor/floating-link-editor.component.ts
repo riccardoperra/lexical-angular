@@ -12,11 +12,12 @@ import {FormBuilder} from '@angular/forms';
 import {
   $getSelection,
   $isRangeSelection,
+  COMMAND_PRIORITY_LOW,
   NodeSelection,
   RangeSelection,
   SELECTION_CHANGE_COMMAND,
 } from 'lexical';
-import {COMMAND_PRIORITY_LOW, LexicalController} from 'lexical-angular';
+import {LexicalController} from 'lexical-angular';
 import {Subject, takeUntil} from 'rxjs';
 import {getSelectedNode, positionEditorElement} from '../helpers';
 import {$isLinkNode, LinkNode, TOGGLE_LINK_COMMAND} from '@lexical/link';

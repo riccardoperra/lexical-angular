@@ -3,7 +3,7 @@ import {LexicalController} from '../../lexical.controller';
 import {LinkNode, TOGGLE_LINK_COMMAND} from '@lexical/link';
 import {merge, Subject, takeUntil} from 'rxjs';
 import {toggleLink} from './toggle-link';
-import {COMMAND_PRIORITY_EDITOR} from '../../constants/priorities';
+import {COMMAND_PRIORITY_EDITOR} from 'lexical';
 
 @Directive({selector: '[lexicalComposer][lexicalLink]'})
 export class LexicalLinkDirective implements OnInit, OnDestroy {
