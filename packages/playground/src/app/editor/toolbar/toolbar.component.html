@@ -20,27 +20,34 @@
   <div class='divider'></div>
 
   <ng-container *ngIf='showBlockTypeFormat'>
-    <lxc-toolbar-block-dropdown
-      [ngModel]='blockType'>
-    </lxc-toolbar-block-dropdown>
+    <div class='inline-flex items-center'>
+      <lxc-toolbar-block-dropdown
+        [ngModel]='blockType'>
+      </lxc-toolbar-block-dropdown>
+    </div>
+
     <div class='divider'></div>
   </ng-container>
 
-  <tui-select
-    [ngModel]='fontFamily'
-    (ngModelChange)='onFontFamilySelect($event)'
-    tuiTextfieldSize='s'>
+  <div class='inline-flex items-center'>
+    <tui-select
+      [ngModel]='fontFamily'
+      (ngModelChange)='onFontFamilySelect($event)'
+      class='toolbar-select'
+      tuiTextfieldSize='s'>
 
-    <input
-      tuiTextfield
-      placeholder='Choose your hero'
-    />
+      <input
+        tuiTextfield
+        placeholder='Choose your hero'
+      />
 
-    <tui-data-list-wrapper
-      *tuiDataList
-      [items]="['Arial', 'Courier New', 'Georgia', 'Times New Roman', 'Trebuchet MS', 'Verdana']"
-    ></tui-data-list-wrapper>
-  </tui-select>
+      <tui-data-list-wrapper
+        *tuiDataList
+        [items]="['Arial', 'Courier New', 'Georgia', 'Times New Roman', 'Trebuchet MS', 'Verdana']"
+      ></tui-data-list-wrapper>
+    </tui-select>
+  </div>
+  <div class='divider'></div>
 
 
 </div>

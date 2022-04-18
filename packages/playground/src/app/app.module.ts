@@ -30,7 +30,6 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
       provide: TUI_BUTTON_OPTIONS,
       useValue: {
         size: 'm',
-        shape: 'square',
         appearance: 'primary',
       } as TuiButtonOptions,
     },

@@ -283,3 +283,18 @@
 .PlaygroundEditorTheme__tokenFunction {
   color: #dd4a68;
 }
+
+.toolbar-select {
+  min-width: 100px;
+  width: auto;
+
+  &:not(._focused) {
+    tui-wrapper[data-appearance='textfield'] {
+      box-shadow: none;
+
+      &::after {
+        border: none;
+      }
+    }
+  }
+}

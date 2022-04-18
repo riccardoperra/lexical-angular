@@ -22,11 +22,21 @@ import {$getNearestNodeOfType} from '@lexical/utils';
 import {$isHeadingNode, HeadingNode} from '@lexical/rich-text';
 import {defer, map, startWith} from 'rxjs';
 import {COMMAND_PRIORITY_CRITICAL} from 'lexical-angular';
+import {TUI_BUTTON_OPTIONS, TuiButtonOptions} from '@taiga-ui/core';
 
 @Component({
   selector: 'lxc-toolbar',
   templateUrl: './toolbar.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [
+    {
+      provide: TUI_BUTTON_OPTIONS,
+      useValue: {
+        size: 's',
+        appearance: 'flat',
+      } as TuiButtonOptions,
+    },
+  ],
 })
 export class LexicalToolbarComponent implements AfterViewInit {
   blockType: EditorBlockTypes = 'paragraph';

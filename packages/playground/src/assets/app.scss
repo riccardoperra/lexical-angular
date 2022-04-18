@@ -1113,6 +1113,7 @@ button.action-button:disabled {
   cursor: pointer;
   vertical-align: middle;
   flex-shrink: 0;
+  align-items: center;
 }
 
 .toolbar button.toolbar-item:disabled {

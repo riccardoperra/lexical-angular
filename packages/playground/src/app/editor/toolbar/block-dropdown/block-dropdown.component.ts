@@ -33,7 +33,10 @@ import {IDENTITY} from '@taiga-ui/kit';
       [(open)]="open"
       [content]="dropdownContent"
     >
-      <button class="toolbar-item block-controls">Selection</button>
+      <button type="button" class="toolbar-item block-controls">
+        <span class="icon block-type" [ngClass]="blockType"></span>
+        {{ blockTypeName }}
+      </button>
     </tui-hosted-dropdown>
     <ng-template #dropdownContent>
       <tui-data-list class="dropdown">
@@ -91,6 +94,23 @@ export class LexicalToolbarBlockDropdownComponent
   open: boolean = false;
   onChange: (value: string) => void = IDENTITY;
   onTouched: () => void = () => void 0;
+
+  blockTypeToBlockName: Record<string, string> = {
+    code: 'Code Block',
+    h1: 'Heading 1',
+    h2: 'Heading 2',
+    h3: 'Heading 3',
+    h4: 'Heading 4',
+    h5: 'Heading 5',
+    ol: 'Numbered List',
+    paragraph: 'Normal',
+    quote: 'Quote',
+    ul: 'Bulleted List',
+  };
+
+  get blockTypeName(): string {
+    return this.blockTypeToBlockName[this.blockType] as string;
+  }
 
   constructor(private readonly controller: LexicalController) {}
 
