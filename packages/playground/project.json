@@ -18,7 +18,11 @@
           "packages/playground/src/favicon.ico",
           "packages/playground/src/assets"
         ],
-        "styles": ["packages/playground/src/styles.scss"],
+        "styles": [
+          "packages/playground/src/styles.scss",
+          "@taiga-ui/core/styles/taiga-ui-global.less",
+          "@taiga-ui/core/styles/taiga-ui-theme.less"
+        ],
         "scripts": []
       },
       "configurations": {

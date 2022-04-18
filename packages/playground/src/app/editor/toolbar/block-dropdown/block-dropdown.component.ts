@@ -1,0 +1,176 @@
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  OnInit,
+} from '@angular/core';
+import {LexicalController} from 'lexical-angular';
+import {
+  $createParagraphNode,
+  $getSelection,
+  $isRangeSelection,
+  RangeSelection,
+} from 'lexical';
+import {$wrapLeafNodesInElements} from '@lexical/selection';
+import {
+  $createHeadingNode,
+  $createQuoteNode,
+  HeadingTagType,
+} from '@lexical/rich-text';
+import {
+  INSERT_ORDERED_LIST_COMMAND,
+  INSERT_UNORDERED_LIST_COMMAND,
+  REMOVE_LIST_COMMAND,
+} from '@lexical/list';
+import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
+import {IDENTITY} from '@taiga-ui/kit';
+
+@Component({
+  selector: 'lxc-toolbar-block-dropdown',
+  template: `
+    <tui-hosted-dropdown
+      tuiDropdownAlign="left"
+      [(open)]="open"
+      [content]="dropdownContent"
+    >
+      <button class="toolbar-item block-controls">Selection</button>
+    </tui-hosted-dropdown>
+    <ng-template #dropdownContent>
+      <tui-data-list class="dropdown">
+        <button tuiOption (click)="onFormatParagraph()" class="item">
+          <span class="icon paragraph"></span>
+          <span class="text">Normal</span>
+          <span class="active" *ngIf="blockType === 'paragraph'"></span>
+        </button>
+        <button tuiOption (click)="onFormatHeading('h1')" class="item">
+          <span class="icon h1"></span>
+          <span class="text">Heading 1</span>
+          <span class="active" *ngIf="blockType === 'h1'"></span>
+        </button>
+        <button tuiOption (click)="onFormatHeading('h2')" class="item">
+          <span class="icon h2"></span>
+          <span class="text">Heading 2</span>
+          <span class="active" *ngIf="blockType === 'h2'"></span>
+        </button>
+        <button tuiOption (click)="onFormatHeading('h3')" class="item">
+          <span class="icon h3"></span>
+          <span class="text">Heading 3</span>
+          <span class="active" *ngIf="blockType === 'h3'"></span>
+        </button>
+        <button tuiOption (click)="onFormatBulletList()" class="item">
+          <span class="icon bullet-list"></span>
+          <span class="text">Bullet list</span>
+          <span class="active" *ngIf="blockType === 'ul'"></span>
+        </button>
+        <button tuiOption (click)="onFormatNumberedList()" class="item">
+          <span class="icon numbered-list"></span>
+          <span class="text">Numbered list</span>
+          <span class="active" *ngIf="blockType === 'ol'"></span>
+        </button>
+        <button tuiOption (click)="onFormatQuote()" class="item">
+          <span class="icon numbered-list"></span>
+          <span class="text">Quote</span>
+          <span class="active" *ngIf="blockType === 'quote'"></span>
+        </button>
+      </tui-data-list>
+    </ng-template>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => LexicalToolbarBlockDropdownComponent),
+      multi: true,
+    },
+  ],
+})
+export class LexicalToolbarBlockDropdownComponent
+  implements OnInit, ControlValueAccessor
+{
+  blockType: string = '';
+  open: boolean = false;
+  onChange: (value: string) => void = IDENTITY;
+  onTouched: () => void = () => void 0;
+
+  constructor(private readonly controller: LexicalController) {}
+
+  writeValue(obj: string): void {
+    this.blockType = obj;
+  }
+
+  registerOnChange(fn: (value: string) => void): void {
+    this.onChange = fn;
+  }
+
+  registerOnTouched(fn: () => void): void {
+    this.onTouched = fn;
+  }
+
+  onFormatParagraph(): void {
+    this.open = false;
+
+    if (this.blockType !== 'paragraph') {
+      this.controller.editor.update(() => {
+        const selection = $getSelection();
+        if ($isRangeSelection(selection)) {
+          $wrapLeafNodesInElements(selection as RangeSelection, () =>
+            $createParagraphNode()
+          );
+        }
+      });
+    }
+  }
+
+  onFormatHeading(headingSize: HeadingTagType) {
+    if (this.blockType !== headingSize) {
+      this.controller.editor.update(() => {
+        const selection = $getSelection();
+
+        if ($isRangeSelection(selection)) {
+          $wrapLeafNodesInElements(
+            selection as RangeSelection,
+            // @ts-expect-error: TODO: lexical internal type
+            () => $createHeadingNode(headingSize)
+          );
+        }
+      });
+    }
+  }
+
+  onFormatBulletList() {
+    if (this.blockType !== 'ul') {
+      this.controller.editor.dispatchCommand(
+        INSERT_UNORDERED_LIST_COMMAND,
+        null
+      );
+    } else {
+      this.controller.editor.dispatchCommand(REMOVE_LIST_COMMAND, null);
+    }
+  }
+
+  onFormatNumberedList() {
+    if (this.blockType !== 'ol') {
+      this.controller.editor.dispatchCommand(INSERT_ORDERED_LIST_COMMAND, null);
+    } else {
+      this.controller.editor.dispatchCommand(REMOVE_LIST_COMMAND, null);
+    }
+  }
+
+  onFormatQuote() {
+    if (this.blockType !== 'quote') {
+      this.controller.editor.update(() => {
+        const selection = $getSelection();
+
+        if ($isRangeSelection(selection)) {
+          $wrapLeafNodesInElements(
+            selection as RangeSelection,
+            // @ts-expect-error: TODO: lexical internal type
+            () => $createQuoteNode()
+          );
+        }
+      });
+    }
+  }
+
+  ngOnInit() {}
+}

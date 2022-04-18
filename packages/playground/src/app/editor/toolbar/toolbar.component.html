@@ -1,0 +1,46 @@
+<div class='toolbar'>
+  <button
+    class='toolbar-item spaced'
+    aria-label='Undo'
+    [disabled]='!canUndo'
+    (click)='onUndo()'
+  >
+    <i class='format undo'></i>
+  </button>
+
+  <button
+    class='toolbar-item'
+    aria-label='Redo'
+    [disabled]='!canRedo'
+    (click)='onRedo()'
+  >
+    <i class='format redo'></i>
+  </button>
+
+  <div class='divider'></div>
+
+  <ng-container *ngIf='showBlockTypeFormat'>
+    <lxc-toolbar-block-dropdown
+      [ngModel]='blockType'>
+    </lxc-toolbar-block-dropdown>
+    <div class='divider'></div>
+  </ng-container>
+
+  <tui-select
+    [ngModel]='fontFamily'
+    (ngModelChange)='onFontFamilySelect($event)'
+    tuiTextfieldSize="s">
+
+    <input
+      tuiTextfield
+      placeholder='Choose your hero'
+    />
+
+    <tui-data-list-wrapper
+      *tuiDataList
+      [items]="['Arial', 'Courier New', 'Georgia', 'Times New Roman', 'Trebuchet MS', 'Verdana']"
+    ></tui-data-list-wrapper>
+  </tui-select>
+
+
+</div>

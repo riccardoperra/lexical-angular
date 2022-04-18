@@ -1,0 +1,24 @@
+<div
+  lexicalComposer
+  [lexicalInitialConfig]='config'
+  lexicalList
+  lexicalLink
+  [lexicalAutofocus]='true'
+>
+  <lxc-toolbar *ngIf='richText'></lxc-toolbar>
+  <div
+    class='editor-container'
+    lexicalRichText
+    [class.plain-text]='!richText'
+  >
+    <div lexicalContentEditable class='ContentEditable__root'></div>
+
+    <div *lexicalPlaceholder class='Placeholder__root'>
+      {{richText ? 'Enter some rich text...' : 'Enter some plain text...'}}
+    </div>
+
+  </div>
+
+</div>
+
+
