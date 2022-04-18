@@ -123,14 +123,14 @@
     class='toolbar-item'
     tuiHint='Outdent'
     (click)='onOutdent()'>
-    <i class='format outdent'></i>
+    <i class='format outdent' [ngClass]='{indent: isRTL, outdent: !isRTL}'></i>
   </button>
 
   <button
     class='toolbar-item'
     tuiHint='Indent'
     (click)='onIndent()'>
-    <i class='format indent'></i>
+    <i class='format' [ngClass]='{indent: !isRTL, outdent: isRTL}'></i>
   </button>
 
 </div>
