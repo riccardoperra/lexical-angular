@@ -9,6 +9,24 @@
     "build:playground": "nx build",
     "test": "nx test"
   },
+  "homepage": "https://lexical-angular-playground.vercel.app",
+  "bugs": "https://github.com/riccardoperra/lexical-angular/issues",
+  "keywords": [
+    "lexical",
+    "rich-text",
+    "editor"
+  ],
+  "contributors": [
+    {
+      "name": "Riccardo Perra",
+      "email": "riccardo.perra@icloud.com",
+      "url": "https://riccardoperra.com"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/riccardoperra/lexical-angular"
+  },
   "private": true,
   "devDependencies": {
     "@angular-devkit/build-angular": "~13.3.0",
