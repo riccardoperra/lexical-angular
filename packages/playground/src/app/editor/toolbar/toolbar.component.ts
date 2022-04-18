@@ -1,12 +1,16 @@
 import {AfterViewInit, ChangeDetectionStrategy, Component} from '@angular/core';
-import {LexicalController} from 'lexical-angular';
+import {COMMAND_PRIORITY_CRITICAL, LexicalController} from 'lexical-angular';
 import {EditorBlockTypes, supportedBlockTypes} from './blocks';
 import {
   $getSelection,
   $isRangeSelection,
   CAN_REDO_COMMAND,
   CAN_UNDO_COMMAND,
+  ElementFormatType,
+  FORMAT_ELEMENT_COMMAND,
   FORMAT_TEXT_COMMAND,
+  INDENT_CONTENT_COMMAND,
+  OUTDENT_CONTENT_COMMAND,
   RangeSelection,
   REDO_COMMAND,
   UNDO_COMMAND,
@@ -22,7 +26,6 @@ import {$isListNode, ListNode} from '@lexical/list';
 import {$getNearestNodeOfType} from '@lexical/utils';
 import {$isHeadingNode, HeadingNode} from '@lexical/rich-text';
 import {defer, map, startWith} from 'rxjs';
-import {COMMAND_PRIORITY_CRITICAL} from 'lexical-angular';
 import {TUI_BUTTON_OPTIONS, TuiButtonOptions} from '@taiga-ui/core';
 
 @Component({
@@ -138,6 +141,18 @@ export class LexicalToolbarComponent implements AfterViewInit {
       FORMAT_TEXT_COMMAND,
       'strikethrough'
     );
+  }
+
+  onAlign(formatType: ElementFormatType): void {
+    this.controller.editor.dispatchCommand(FORMAT_ELEMENT_COMMAND, formatType);
+  }
+
+  onOutdent(): void {
+    this.controller.editor.dispatchCommand(OUTDENT_CONTENT_COMMAND, null);
+  }
+
+  onIndent(): void {
+    this.controller.editor.dispatchCommand(INDENT_CONTENT_COMMAND, null);
   }
 
   onFontFamilySelect(fontFamily: string): void {

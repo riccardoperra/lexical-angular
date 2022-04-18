@@ -9,6 +9,7 @@ import {
   TuiDataListModule,
   TuiDropdownControllerModule,
   TuiDropdownModule,
+  TuiHintModule,
   TuiHostedDropdownModule,
   TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
@@ -31,6 +32,7 @@ import {LexicalListPluginModule} from '../../../../lexical-angular/src/lib/plugi
     TuiTextfieldControllerModule,
     LexicalListPluginModule,
     ReactiveFormsModule,
+    TuiHintModule,
   ],
   exports: [PlaygroundEditorComponent],
   declarations: [

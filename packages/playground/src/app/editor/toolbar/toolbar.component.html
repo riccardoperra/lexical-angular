@@ -37,7 +37,7 @@
       tuiTextfieldSize='s'>
       <tui-data-list-wrapper
         *tuiDataList
-        [items]="fontFamilyItems"
+        [items]='fontFamilyItems'
       ></tui-data-list-wrapper>
     </tui-select>
   </div>
@@ -50,7 +50,7 @@
       tuiTextfieldSize='s'>
       <tui-data-list-wrapper
         *tuiDataList
-        [items]="fontSizeItems"
+        [items]='fontSizeItems'
       ></tui-data-list-wrapper>
     </tui-select>
   </div>
@@ -59,6 +59,7 @@
 
   <button
     class='toolbar-item'
+    tuiHint='Bold'
     [class.active]='isBold'
     (click)='onSetBold()'>
     <i class='format bold'></i>
@@ -66,6 +67,7 @@
 
   <button
     class='toolbar-item'
+    tuiHint='Italic'
     [class.active]='isItalic'
     (click)='onSetItalic()'>
     <i class='format italic'></i>
@@ -73,6 +75,7 @@
 
   <button
     class='toolbar-item'
+    tuiHint='Underline'
     [class.active]='isUnderline'
     (click)='onSetUnderline()'>
     <i class='format underline'></i>
@@ -80,11 +83,54 @@
 
   <button
     class='toolbar-item'
+    tuiHint='Strikethrough'
     [class.active]='isStrikethrough'
     (click)='onSetStrikethrough()'>
     <i class='format strikethrough'></i>
   </button>
 
   <div class='divider'></div>
+
+  <button
+    class='toolbar-item'
+    tuiHint='Left align'
+    (click)="onAlign('left')">
+    <i class='format left-align'></i>
+  </button>
+
+  <button
+    class='toolbar-item'
+    tuiHint='Center align'
+    (click)="onAlign('center')">
+    <i class='format center-align'></i>
+  </button>
+
+  <button
+    class='toolbar-item'
+    tuiHint='Right align'
+    (click)="onAlign('right')">
+    <i class='format right-align'></i>
+  </button>
+
+  <button
+    class='toolbar-item'
+    tuiHint='Justify align'
+    (click)="onAlign('justify')">
+    <i class='format justify-align'></i>
+  </button>
+
+  <button
+    class='toolbar-item'
+    tuiHint='Outdent'
+    (click)='onOutdent()'>
+    <i class='format outdent'></i>
+  </button>
+
+  <button
+    class='toolbar-item'
+    tuiHint='Indent'
+    (click)='onIndent()'>
+    <i class='format indent'></i>
+  </button>
 
 </div>
