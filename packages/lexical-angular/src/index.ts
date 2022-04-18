@@ -7,5 +7,6 @@ export * from './lib/plugins/on-change';
 export * from './lib/plugins/content-editable';
 export * from './lib/plugins/placeholder';
 export * from './lib/plugins/plain-text';
+export * from './lib/plugins/history';
 
 export * from './lib/constants/priorities';

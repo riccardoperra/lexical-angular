@@ -40,7 +40,7 @@ export class LexicalController implements OnDestroy {
         command,
         (...args) => {
           observer.next(args);
-          return command(...args);
+          return listener(...args);
         },
         priority
       );

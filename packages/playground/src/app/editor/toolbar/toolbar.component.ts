@@ -4,6 +4,7 @@ import {EditorBlockTypes, supportedBlockTypes} from './blocks';
 import {
   $getSelection,
   $isRangeSelection,
+  CAN_REDO_COMMAND,
   CAN_UNDO_COMMAND,
   RangeSelection,
   REDO_COMMAND,
@@ -56,7 +57,7 @@ export class LexicalToolbarComponent implements AfterViewInit {
   readonly canRedo$ = defer(() =>
     this.controller
       .registerCommand(
-        CAN_UNDO_COMMAND,
+        CAN_REDO_COMMAND,
         (payload: boolean) => false,
         COMMAND_PRIORITY_CRITICAL
       )

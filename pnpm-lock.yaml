@@ -22,6 +22,7 @@ importers:
       '@changesets/cli': ^2.22.0
       '@lexical/clipboard': ^0.2.1
       '@lexical/dragon': ^0.2.1
+      '@lexical/history': ^0.2.1
       '@lexical/link': ^0.2.1
       '@lexical/list': ^0.2.1
       '@lexical/plain-text': ^0.2.1
@@ -94,6 +95,7 @@ importers:
       '@angular/compiler-cli': 13.3.3_38de2c22041dec8c84ce012de55b5390
       '@angular/language-service': 13.3.3
       '@changesets/cli': 2.22.0
+      '@lexical/history': 0.2.1_lexical@0.2.1
       '@lexical/link': 0.2.1_lexical@0.2.1
       '@lexical/list': 0.2.1_lexical@0.2.1
       '@nrwl/cli': 13.10.2
@@ -2485,6 +2487,15 @@ packages:
     dependencies:
       lexical: 0.2.1
     dev: false
+
+  /@lexical/history/0.2.1_lexical@0.2.1:
+    resolution: {integrity: sha512-6IZc89QnY4hZw8xbdPEcwKBPJeSpqLR1f6nGnSyu3MgcHc4DcE0vDtdwPnvOON0mWpseWdFiYFWaudFFqBeyAQ==}
+    peerDependencies:
+      lexical: 0.2.1
+    dependencies:
+      '@lexical/utils': 0.2.1_lexical@0.2.1
+      lexical: 0.2.1
+    dev: true
 
   /@lexical/link/0.2.1_lexical@0.2.1:
     resolution: {integrity: sha512-91eID3LUVj07epPI98MhSVXlqMhbmPHFi/khaekYfx+STtMKMVyiPf9txxsVUKIgajfCopWSVUqu9ZdT+R7ZnQ==}
