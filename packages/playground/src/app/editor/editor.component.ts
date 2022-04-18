@@ -10,6 +10,7 @@ import {ListItemNode, ListNode} from '@lexical/list';
 import {HeadingNode, QuoteNode} from '@lexical/rich-text';
 import {LexicalComposerConfig} from 'lexical-angular';
 import {editorTheme} from './theme';
+import {FormControl} from '@angular/forms';
 
 @Component({
   selector: 'lxc-playground-editor',
@@ -48,7 +49,11 @@ export class PlaygroundEditorComponent implements OnInit {
     ],
   };
 
+  testing = new FormControl();
+
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.testing.valueChanges.subscribe(console.log);
+  }
 }

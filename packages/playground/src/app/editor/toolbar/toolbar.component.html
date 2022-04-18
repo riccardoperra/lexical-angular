@@ -35,15 +35,22 @@
       (ngModelChange)='onFontFamilySelect($event)'
       class='toolbar-select'
       tuiTextfieldSize='s'>
-
-      <input
-        tuiTextfield
-        placeholder='Choose your hero'
-      />
-
       <tui-data-list-wrapper
         *tuiDataList
-        [items]="['Arial', 'Courier New', 'Georgia', 'Times New Roman', 'Trebuchet MS', 'Verdana']"
+        [items]="fontFamilyItems"
+      ></tui-data-list-wrapper>
+    </tui-select>
+  </div>
+
+  <div class='inline-flex items-center'>
+    <tui-select
+      [ngModel]='fontSize'
+      (ngModelChange)='onFontSizeSelect($event)'
+      class='toolbar-select'
+      tuiTextfieldSize='s'>
+      <tui-data-list-wrapper
+        *tuiDataList
+        [items]="fontSizeItems"
       ></tui-data-list-wrapper>
     </tui-select>
   </div>

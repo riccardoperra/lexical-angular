@@ -39,6 +39,29 @@ import {TUI_BUTTON_OPTIONS, TuiButtonOptions} from '@taiga-ui/core';
   ],
 })
 export class LexicalToolbarComponent implements AfterViewInit {
+  readonly fontSizeItems: string[] = [
+    '10px',
+    '11px',
+    '12px',
+    '13px',
+    '14px',
+    '15px',
+    '16px',
+    '17px',
+    '18px',
+    '19px',
+    '20px',
+  ];
+
+  readonly fontFamilyItems: string[] = [
+    'Arial',
+    'Courier New',
+    'Georgia',
+    'Times New Roman',
+    'Trebuchet MS',
+    'Verdana',
+  ];
+
   blockType: EditorBlockTypes = 'paragraph';
   selectedElementKey: string | null = null;
   fontSize = '15px';
@@ -100,6 +123,12 @@ export class LexicalToolbarComponent implements AfterViewInit {
   onFontFamilySelect(fontFamily: string): void {
     this.applyStyleText({
       'font-family': fontFamily,
+    });
+  }
+
+  onFontSizeSelect(fontFamily: string): void {
+    this.applyStyleText({
+      'font-size': fontFamily,
     });
   }
 
