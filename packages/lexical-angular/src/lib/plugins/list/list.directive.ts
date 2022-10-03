@@ -31,18 +31,24 @@ export class LexicalListDirective implements OnInit, OnDestroy {
       unsubscribe: mergeRegister(
         editor.registerCommand(
           INDENT_CONTENT_COMMAND,
-          () => indentList(),
+          () => {
+            indentList();
+            return false;
+          },
           COMMAND_PRIORITY_LOW
         ),
         editor.registerCommand(
           OUTDENT_CONTENT_COMMAND,
-          () => outdentList(),
+          () => {
+            outdentList();
+            return false;
+          },
           COMMAND_PRIORITY_LOW
         ),
         editor.registerCommand(
           INSERT_ORDERED_LIST_COMMAND,
           () => {
-            insertList(editor, 'ol');
+            insertList(editor, 'number');
             return true;
           },
           COMMAND_PRIORITY_LOW
@@ -50,7 +56,7 @@ export class LexicalListDirective implements OnInit, OnDestroy {
         editor.registerCommand(
           INSERT_UNORDERED_LIST_COMMAND,
           () => {
-            insertList(editor, 'ul');
+            insertList(editor, 'bullet');
             return true;
           },
           COMMAND_PRIORITY_LOW

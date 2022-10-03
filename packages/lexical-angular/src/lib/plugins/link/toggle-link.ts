@@ -25,20 +25,17 @@ export function toggleLink(url: string | null): void {
       if (nodes.length === 1) {
         const firstNode = nodes[0];
         if ($isLinkNode(firstNode)) {
-          // @ts-expect-error: TODO: Internal lexical types
           firstNode.setURL(url);
           return;
         } else {
           if (nodes.length === 1) {
             const firstNode = nodes[0];
             if ($isLinkNode(firstNode)) {
-              // @ts-expect-error: TODO: Internal lexical types
               firstNode.setURL(url);
               return;
             } else {
               const parent = firstNode.getParent();
               if ($isLinkNode(parent)) {
-                // @ts-expect-error: TODO: Internal lexical types
                 parent.setURL(url);
                 return;
               }
@@ -53,35 +50,29 @@ export function toggleLink(url: string | null): void {
           if (
             parent === linkNode ||
             !parent ||
-            // @ts-expect-error: TODO: Internal lexical types
             ($isElementNode(node) && !node.isInline())
           ) {
             return;
           }
-          // @ts-expect-error: TODO: Internal lexical types
+
           if (!parent.is(prevParent)) {
             // @ts-expect-error: TODO: Internal lexical types
             prevParent = parent;
             linkNode = $createLinkNode(url);
             if ($isLinkNode(parent)) {
               if (node.getPreviousSibling() === null) {
-                // @ts-expect-error: TODO: Internal lexical types
                 parent.insertBefore(linkNode);
               } else {
-                // @ts-expect-error: TODO: Internal lexical types
                 parent.insertAfter(linkNode);
               }
             } else {
-              // @ts-expect-error: TODO: Internal lexical types
               node.insertBefore(linkNode);
             }
           }
           if ($isLinkNode(node)) {
             if (linkNode !== null) {
-              // @ts-expect-error: TODO: Internal lexical types
               const children = node.getChildren();
               for (let i = 0; i < children.length; i++) {
-                // @ts-expect-error: TODO: Internal lexical types
                 linkNode.append(children[i]);
               }
             }
@@ -89,7 +80,6 @@ export function toggleLink(url: string | null): void {
             return;
           }
           if (linkNode) {
-            // @ts-expect-error: TODO: Internal lexical types
             linkNode.append(node);
           }
         });

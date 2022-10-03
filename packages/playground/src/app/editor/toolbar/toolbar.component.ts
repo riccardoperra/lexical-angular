@@ -50,19 +50,7 @@ import {LexicalFloatingLinkEditorComponent} from './floating-link-editor/floatin
   ],
 })
 export class LexicalToolbarComponent implements AfterViewInit {
-  readonly fontSizeItems: string[] = [
-    '10px',
-    '11px',
-    '12px',
-    '13px',
-    '14px',
-    '15px',
-    '16px',
-    '17px',
-    '18px',
-    '19px',
-    '20px',
-  ];
+  readonly fontSizeItems: string[] = Array(10).fill(10).map((size, index) => `${size + index}px`);
 
   readonly fontFamilyItems: string[] = [
     'Arial',
@@ -91,7 +79,7 @@ export class LexicalToolbarComponent implements AfterViewInit {
     this.controller
       .registerCommand(
         CAN_UNDO_COMMAND,
-        (payload: boolean) => false,
+        (payload: boolean) => payload,
         COMMAND_PRIORITY_CRITICAL
       )
       .pipe(
@@ -104,7 +92,7 @@ export class LexicalToolbarComponent implements AfterViewInit {
     this.controller
       .registerCommand(
         CAN_REDO_COMMAND,
-        (payload: boolean) => false,
+        (payload: boolean) => payload,
         COMMAND_PRIORITY_CRITICAL
       )
       .pipe(
@@ -119,7 +107,7 @@ export class LexicalToolbarComponent implements AfterViewInit {
   ) {}
 
   get showBlockTypeFormat(): boolean {
-    return supportedBlockTypes.has(this.blockType);
+    return supportedBlockTypes.has(this.blockType) || this.blockType === 'root';
   }
 
   ngAfterViewInit() {
@@ -129,11 +117,11 @@ export class LexicalToolbarComponent implements AfterViewInit {
   }
 
   onUndo(): void {
-    this.controller.editor.dispatchCommand(UNDO_COMMAND, null);
+    this.controller.editor.dispatchCommand(UNDO_COMMAND, undefined);
   }
 
   onRedo(): void {
-    this.controller.editor.dispatchCommand(REDO_COMMAND, null);
+    this.controller.editor.dispatchCommand(REDO_COMMAND, undefined);
   }
 
   onSetBold(): void {
@@ -160,11 +148,11 @@ export class LexicalToolbarComponent implements AfterViewInit {
   }
 
   onOutdent(): void {
-    this.controller.editor.dispatchCommand(OUTDENT_CONTENT_COMMAND, null);
+    this.controller.editor.dispatchCommand(OUTDENT_CONTENT_COMMAND, undefined);
   }
 
   onIndent(): void {
-    this.controller.editor.dispatchCommand(INDENT_CONTENT_COMMAND, null);
+    this.controller.editor.dispatchCommand(INDENT_CONTENT_COMMAND, undefined);
   }
 
   onInsertLink(): void {
@@ -218,7 +206,7 @@ export class LexicalToolbarComponent implements AfterViewInit {
       const parent = node.getParent();
       this.isLink = $isLinkNode(parent) || $isLinkNode(node);
 
-      if (!!elementDOM) {
+      if (elementDOM) {
         this.selectedElementKey = elementKey;
         if ($isListNode(element)) {
           const parentList = $getNearestNodeOfType(

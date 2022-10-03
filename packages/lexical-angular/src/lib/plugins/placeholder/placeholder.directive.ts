@@ -8,7 +8,6 @@ import {
 } from '@angular/core';
 import {LexicalController} from '../../lexical.controller';
 import {
-  defer,
   distinctUntilChanged,
   map,
   startWith,
@@ -55,7 +54,7 @@ export class LexicalPlaceholderDirective implements OnInit, OnDestroy {
   ): boolean {
     const computedEditorState = editorState ?? editor.getEditorState();
     return computedEditorState.read(
-      $canShowPlaceholderCurry(editor.isComposing())
+      $canShowPlaceholderCurry(editor.isComposing(), editor.isEditable())
     );
   }
 

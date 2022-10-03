@@ -67,7 +67,7 @@ export class LexicalFloatingLinkEditorComponent
   implements AfterViewInit, OnDestroy
 {
   destroy$ = new Subject<void>();
-  editMode: boolean = false;
+  editMode = false;
   linkUrl = this.fb.control('');
   lastSelection: NodeSelection | null = null;
   mouseDownRef = false;
@@ -107,7 +107,7 @@ export class LexicalFloatingLinkEditorComponent
 
   onEnter(event: Event): void {
     event.preventDefault();
-    if (!!this.lastSelection) {
+    if (this.lastSelection) {
       if (this.linkUrl.value !== '') {
         this.controller.editor.dispatchCommand(
           TOGGLE_LINK_COMMAND,

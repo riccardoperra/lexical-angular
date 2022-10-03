@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 
 @Component({
   selector: 'lxc-playground-main',
@@ -29,8 +29,6 @@ import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class MainComponent implements OnInit {
+export class MainComponent {
   constructor() {}
-
-  ngOnInit() {}
 }

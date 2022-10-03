@@ -65,7 +65,7 @@ export class LexicalContentEditableDirective implements OnInit, OnDestroy {
   id?: string | null = null;
 
   @Input()
-  readOnly?: boolean = false;
+  editable?: boolean = true;
 
   @Input()
   role?: string = 'textbox';
@@ -123,7 +123,7 @@ export class LexicalContentEditableDirective implements OnInit, OnDestroy {
 
   private readonly destroy$ = new Subject<void>();
 
-  computedReadOnly: boolean = true;
+  computedReadOnly = true;
 
   constructor(
     private readonly controller: LexicalController,
@@ -138,7 +138,7 @@ export class LexicalContentEditableDirective implements OnInit, OnDestroy {
 
     this.controller.readOnly$
       .pipe(
-        startWith(this.controller.editor.isReadOnly()),
+        startWith(!this.controller.editor.isEditable()),
         takeUntil(this.destroy$)
       )
       .subscribe(readOnly => {
