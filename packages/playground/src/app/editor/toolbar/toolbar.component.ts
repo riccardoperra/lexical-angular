@@ -3,6 +3,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   Injector,
+  OnDestroy,
 } from '@angular/core';
 import {LexicalController} from 'lexical-angular';
 import {EditorBlockTypes, supportedBlockTypes} from './blocks';
@@ -16,6 +17,7 @@ import {
   FORMAT_ELEMENT_COMMAND,
   FORMAT_TEXT_COMMAND,
   INDENT_CONTENT_COMMAND,
+  LexicalCommand,
   OUTDENT_CONTENT_COMMAND,
   RangeSelection,
   REDO_COMMAND,
@@ -31,9 +33,10 @@ import {$isLinkNode, TOGGLE_LINK_COMMAND} from '@lexical/link';
 import {$isListNode, ListNode} from '@lexical/list';
 import {$getNearestNodeOfType} from '@lexical/utils';
 import {$isHeadingNode, HeadingNode} from '@lexical/rich-text';
-import {defer, map, startWith} from 'rxjs';
+import {defer, map, startWith, Unsubscribable} from 'rxjs';
 import {TUI_BUTTON_OPTIONS, TuiButtonOptions} from '@taiga-ui/core';
 import {LexicalFloatingLinkEditorComponent} from './floating-link-editor/floating-link-editor.component';
+import {INSERT_HORIZONTAL_RULE_COMMAND} from 'lexical-angular';
 
 @Component({
   selector: 'lxc-toolbar',
@@ -49,8 +52,12 @@ import {LexicalFloatingLinkEditorComponent} from './floating-link-editor/floatin
     },
   ],
 })
-export class LexicalToolbarComponent implements AfterViewInit {
-  readonly fontSizeItems: string[] = Array(10).fill(10).map((size, index) => `${size + index}px`);
+export class LexicalToolbarComponent implements AfterViewInit, OnDestroy {
+  listener: Unsubscribable | null = null;
+
+  readonly fontSizeItems: string[] = Array(10)
+    .fill(10)
+    .map((size, index) => `${size + index}px`);
 
   readonly fontFamilyItems: string[] = [
     'Arial',
@@ -59,6 +66,14 @@ export class LexicalToolbarComponent implements AfterViewInit {
     'Times New Roman',
     'Trebuchet MS',
     'Verdana',
+  ];
+
+  readonly insertOptions = [
+    {
+      command: INSERT_HORIZONTAL_RULE_COMMAND,
+      label: 'Horizontal Rule',
+      icon: 'tuiIconCard',
+    },
   ];
 
   blockType: EditorBlockTypes = 'paragraph';
@@ -72,6 +87,26 @@ export class LexicalToolbarComponent implements AfterViewInit {
   isStrikethrough = false;
   isCode = false;
   isRTL = false;
+  open = false;
+
+  onClick(): void {
+    this.open = !this.open;
+  }
+
+  onObscured(obscured: any): void {
+    if (obscured) {
+      this.open = false;
+    }
+  }
+
+  onActiveZone(active: any): void {
+    this.open = active && this.open;
+  }
+
+  executeCommand(command: LexicalCommand<any>): void {
+    this.open = false;
+    this.controller.editor.dispatchCommand(command, undefined);
+  }
 
   readonly floatingLinkEditor = LexicalFloatingLinkEditorComponent;
 
@@ -107,13 +142,21 @@ export class LexicalToolbarComponent implements AfterViewInit {
   ) {}
 
   get showBlockTypeFormat(): boolean {
-    return supportedBlockTypes.has(this.blockType) || this.blockType === 'root';
+    return supportedBlockTypes.has(this.blockType);
   }
 
   ngAfterViewInit() {
-    this.controller.editor.registerUpdateListener(({editorState}) => {
-      editorState.read(() => this.updateToolbar());
-    });
+    this.listener = {
+      unsubscribe: this.controller.editor.registerUpdateListener(
+        ({editorState}) => {
+          editorState.read(() => this.updateToolbar());
+        }
+      ),
+    };
+  }
+
+  ngOnDestroy(): void {
+    this.listener?.unsubscribe();
   }
 
   onUndo(): void {

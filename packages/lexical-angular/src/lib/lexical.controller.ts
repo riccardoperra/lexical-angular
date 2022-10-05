@@ -1,8 +1,14 @@
 import {Injectable, OnDestroy} from '@angular/core';
 import {
+  $getNodeByKey,
+  $getSelection,
+  $isNodeSelection,
+  CLICK_COMMAND,
   CommandListenerPriority,
+  COMMAND_PRIORITY_LOW,
   LexicalCommand,
   LexicalEditor,
+  NodeKey,
 } from 'lexical';
 import {CommandListener, UpdateListener} from 'lexical/LexicalEditor';
 import {Observable, ReplaySubject} from 'rxjs';
@@ -28,6 +34,34 @@ export class LexicalController implements OnDestroy {
   readonly onUpdate$ = new Observable<Parameters<UpdateListener>[0]>(observer =>
     this.editor.registerUpdateListener(listener => observer.next(listener))
   );
+
+  isSelected(nodeKey: NodeKey): Observable<boolean> {
+    return new Observable<boolean>(observer =>
+      this.editor.registerCommand<MouseEvent>(
+        CLICK_COMMAND,
+        (payload: MouseEvent) => {
+          this.editor.update(() => {
+            const node = $getNodeByKey(nodeKey);
+
+            observer.next(!!node && node.isSelected());
+          });
+
+          return false;
+        },
+        COMMAND_PRIORITY_LOW
+      )
+    );
+  }
+
+  clearSelected() {
+    this.editor.update(() => {
+      const selection = $getSelection();
+
+      if ($isNodeSelection(selection)) {
+        selection.clear();
+      }
+    });
+  }
 
   registerCommand<P>(
     command: LexicalCommand<P>,

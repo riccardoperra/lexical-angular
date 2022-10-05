@@ -11,6 +11,8 @@ import {LexicalLinkPluginModule} from './plugins/link';
 import {LexicalClearEditorPluginModule} from './plugins/clear';
 import {LexicalHistoryPluginModule} from './plugins/history';
 import {LexicalControlValueAccessorPluginModule} from './plugins/control-value-accessor';
+import {LexicalHorizontalRulePluginModule} from './plugins/horizontal-rule-plugin';
+import {LexicalDecoratorsPluginModule} from './plugins/decorators/lexical-decorators.module';
 
 const PLUGINS = [
   LexicalAutofocusPluginModule,
@@ -23,6 +25,8 @@ const PLUGINS = [
   LexicalPlaceholderPluginModule,
   LexicalPlainTextPluginModule,
   LexicalRichTextPluginModule,
+  LexicalDecoratorsPluginModule,
+  LexicalHorizontalRulePluginModule,
 ];
 
 @NgModule({

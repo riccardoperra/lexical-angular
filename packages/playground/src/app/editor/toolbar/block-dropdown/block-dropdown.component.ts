@@ -23,7 +23,6 @@ import {
   REMOVE_LIST_COMMAND,
 } from '@lexical/list';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
-import {IDENTITY} from '@taiga-ui/kit';
 
 @Component({
   selector: 'lxc-toolbar-block-dropdown',
@@ -104,7 +103,7 @@ export class LexicalToolbarBlockDropdownComponent
   };
   blockType = '';
   open = false;
-  onChange: (value: string) => void = IDENTITY;
+  onChange: (value: string) => void = () => {};
   onTouched: () => void = () => void 0;
 
   get blockTypeName(): string {

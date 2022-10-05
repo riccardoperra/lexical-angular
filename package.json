@@ -6,6 +6,8 @@
   "scripts": {
     "nx": "nx",
     "postinstall": "ngcc --properties es2015 browser module main",
+    "start": "npm run start:playground",
+    "build:lib": "nx build lexical-angular",
     "start:playground": "nx serve playground",
     "build:playground": "nx build",
     "test": "nx test"
@@ -45,10 +47,10 @@
     "@nrwl/jest": "13.10.2",
     "@nrwl/linter": "13.10.2",
     "@nrwl/workspace": "13.10.2",
-    "@taiga-ui/cdk": "^2.41.1",
-    "@taiga-ui/core": "^2.41.1",
-    "@taiga-ui/icons": "^2.41.1",
-    "@taiga-ui/kit": "^2.41.1",
+    "@taiga-ui/cdk": "^3.5.0",
+    "@taiga-ui/core": "^3.5.0",
+    "@taiga-ui/icons": "^3.5.0",
+    "@taiga-ui/kit": "^3.5.0",
     "@types/jest": "27.0.2",
     "@types/node": "16.11.7",
     "@typescript-eslint/eslint-plugin": "~5.18.0",

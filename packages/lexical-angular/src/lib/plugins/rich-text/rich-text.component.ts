@@ -24,8 +24,7 @@ export type LexicalRichTextInitialState =
     <ng-content></ng-content>
     <ng-content select="[lexicalContentEditable]"></ng-content>
     <ng-content select="[lexicalPlaceholder]"></ng-content>
-    <!-- TODO: add integration -->
-    <!-- <ng-content select="[lexicalDecorators]"></ng-content>-->
+    <ng-content select="[lexicalDecorators]"></ng-content>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

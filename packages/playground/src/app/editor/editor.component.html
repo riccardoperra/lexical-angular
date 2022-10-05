@@ -4,6 +4,7 @@
   lexicalList
   lexicalLink
   lexicalHistory
+  lexicalHorizontalRule
   [lexicalAutofocus]='true'
 >
   <lxc-toolbar *ngIf='richText'></lxc-toolbar>
@@ -17,6 +18,8 @@
     <div *lexicalPlaceholder class='Placeholder__root'>
       {{richText ? 'Enter some rich text...' : 'Enter some plain text...'}}
     </div>
+
+    <div lexicalDecorators></div>
 
   </div>
 

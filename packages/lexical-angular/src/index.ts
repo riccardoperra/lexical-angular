@@ -12,3 +12,5 @@ export * from './lib/plugins/on-change';
 export * from './lib/plugins/placeholder';
 export * from './lib/plugins/plain-text';
 export * from './lib/plugins/rich-text';
+export * from './lib/plugins/decorators';
+export * from './lib/plugins/horizontal-rule-plugin';
