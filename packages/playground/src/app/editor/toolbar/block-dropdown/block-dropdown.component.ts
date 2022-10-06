@@ -11,7 +11,7 @@ import {
   ElementNode,
   RangeSelection,
 } from 'lexical';
-import { $wrapNodes } from '@lexical/selection';
+import {$wrapNodes} from '@lexical/selection';
 import {
   $createHeadingNode,
   $createQuoteNode,
@@ -87,7 +87,7 @@ import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
   ],
 })
 export class LexicalToolbarBlockDropdownComponent
-  implements  ControlValueAccessor
+  implements ControlValueAccessor
 {
   blockTypeToBlockName: Record<string, string> = {
     code: 'Code Block',
@@ -174,7 +174,10 @@ export class LexicalToolbarBlockDropdownComponent
     this.open = false;
 
     if (this.blockType !== 'ol') {
-      this.controller.editor.dispatchCommand(INSERT_ORDERED_LIST_COMMAND, undefined);
+      this.controller.editor.dispatchCommand(
+        INSERT_ORDERED_LIST_COMMAND,
+        undefined
+      );
     } else {
       this.controller.editor.dispatchCommand(REMOVE_LIST_COMMAND, undefined);
     }
@@ -195,5 +198,4 @@ export class LexicalToolbarBlockDropdownComponent
       });
     }
   }
-  
 }

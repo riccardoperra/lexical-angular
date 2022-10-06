@@ -52,9 +52,9 @@ import {INSERT_HORIZONTAL_RULE_COMMAND} from 'lexical-angular';
     },
   ],
 })
-export class LexicalToolbarComponent implements AfterViewInit, OnDestroy {
+export class LexicalToolbarComponent implements AfterViewInit {
   listener: Unsubscribable | null = null;
-
+  
   readonly fontSizeItems: string[] = Array(10)
     .fill(10)
     .map((size, index) => `${size + index}px`);
@@ -142,7 +142,7 @@ export class LexicalToolbarComponent implements AfterViewInit, OnDestroy {
   ) {}
 
   get showBlockTypeFormat(): boolean {
-    return supportedBlockTypes.has(this.blockType);
+    return supportedBlockTypes.has(this.blockType) || this.blockType === 'root';
   }
 
   ngAfterViewInit() {
