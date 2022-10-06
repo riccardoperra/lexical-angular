@@ -25,7 +25,7 @@
         ],
         "styles": [
           "packages/playground/src/styles.scss",
-          "node_modules/@taiga-ui/core/styles/taiga-ui-global.less",
+          "node_modules/@taiga-ui/core/styles/taiga-ui-local.less",
           "node_modules/@taiga-ui/core/styles/taiga-ui-theme.less"
         ],
         "scripts": []
@@ -40,8 +40,8 @@
             },
             {
               "type": "anyComponentStyle",
-              "maximumWarning": "2kb",
-              "maximumError": "4kb"
+              "maximumWarning": "3kb",
+              "maximumError": "5kb"
             }
           ],
           "fileReplacements": [

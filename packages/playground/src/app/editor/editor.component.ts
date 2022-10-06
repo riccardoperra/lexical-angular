@@ -21,7 +21,7 @@ import {FormControl} from '@angular/forms';
 })
 export class PlaygroundEditorComponent implements OnInit {
   @Input()
-  richText: boolean = true;
+  richText = true;
 
   config: LexicalComposerConfig = {
     namespace: 'PlaygroundEditor',

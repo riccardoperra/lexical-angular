@@ -2,7 +2,7 @@
   <button
     class='toolbar-item spaced'
     aria-label='Undo'
-    [disabled]='!(canUndo$ | async)'
+    [disabled]='(canUndo$ | async) === false'
     (click)='onUndo()'
   >
     <i class='format undo'></i>
@@ -11,7 +11,7 @@
   <button
     class='toolbar-item'
     aria-label='Redo'
-    [disabled]='!(canRedo$ | async)'
+    [disabled]='(canRedo$ | async) === false'
     (click)='onRedo()'
   >
     <i class='format redo'></i>
@@ -28,7 +28,7 @@
     <div class='divider'></div>
   </ng-container>
 
-  <div class='inline-flex items-center'>
+  <div class='inline-flex items-center mr-1.5'>
     <tui-select
       [ngModel]='fontFamily'
       (ngModelChange)='onFontFamilySelect($event)'

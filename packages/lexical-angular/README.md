@@ -53,7 +53,7 @@ export class PlainTextEditorComponent {
       placeholder: 'editor-placeholder',
       paragraph: 'editor-paragraph',
     },
-    readOnly: false,
+    editable: true,
     nodes: [],
   };
 

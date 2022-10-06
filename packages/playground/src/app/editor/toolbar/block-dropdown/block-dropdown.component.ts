@@ -1,9 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  OnInit,
-} from '@angular/core';
+import {ChangeDetectionStrategy, Component, forwardRef} from '@angular/core';
 import {LexicalController} from 'lexical-angular';
 import {
   $createParagraphNode,
@@ -12,7 +7,7 @@ import {
   ElementNode,
   RangeSelection,
 } from 'lexical';
-import {$wrapLeafNodesInElements} from '@lexical/selection';
+import {$wrapNodes} from '@lexical/selection';
 import {
   $createHeadingNode,
   $createQuoteNode,
@@ -24,7 +19,6 @@ import {
   REMOVE_LIST_COMMAND,
 } from '@lexical/list';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
-import {IDENTITY} from '@taiga-ui/kit';
 
 @Component({
   selector: 'lxc-toolbar-block-dropdown',
@@ -89,13 +83,8 @@ import {IDENTITY} from '@taiga-ui/kit';
   ],
 })
 export class LexicalToolbarBlockDropdownComponent
-  implements OnInit, ControlValueAccessor
+  implements ControlValueAccessor
 {
-  blockType: string = '';
-  open: boolean = false;
-  onChange: (value: string) => void = IDENTITY;
-  onTouched: () => void = () => void 0;
-
   blockTypeToBlockName: Record<string, string> = {
     code: 'Code Block',
     h1: 'Heading 1',
@@ -108,6 +97,10 @@ export class LexicalToolbarBlockDropdownComponent
     quote: 'Quote',
     ul: 'Bulleted List',
   };
+  blockType = '';
+  open = false;
+  onChange: (value: string) => void = () => {};
+  onTouched: () => void = () => void 0;
 
   get blockTypeName(): string {
     return this.blockTypeToBlockName[this.blockType] as string;
@@ -134,9 +127,7 @@ export class LexicalToolbarBlockDropdownComponent
       this.controller.editor.update(() => {
         const selection = $getSelection();
         if ($isRangeSelection(selection)) {
-          $wrapLeafNodesInElements(selection as RangeSelection, () =>
-            $createParagraphNode()
-          );
+          $wrapNodes(selection as RangeSelection, () => $createParagraphNode());
         }
       });
     }
@@ -150,7 +141,7 @@ export class LexicalToolbarBlockDropdownComponent
         const selection = $getSelection();
 
         if ($isRangeSelection(selection)) {
-          $wrapLeafNodesInElements(
+          $wrapNodes(
             selection as RangeSelection,
             // TODO: fix type
             () => $createHeadingNode(headingSize) as unknown as ElementNode
@@ -166,10 +157,10 @@ export class LexicalToolbarBlockDropdownComponent
     if (this.blockType !== 'ul') {
       this.controller.editor.dispatchCommand(
         INSERT_UNORDERED_LIST_COMMAND,
-        null
+        undefined
       );
     } else {
-      this.controller.editor.dispatchCommand(REMOVE_LIST_COMMAND, null);
+      this.controller.editor.dispatchCommand(REMOVE_LIST_COMMAND, undefined);
     }
   }
 
@@ -177,9 +168,12 @@ export class LexicalToolbarBlockDropdownComponent
     this.open = false;
 
     if (this.blockType !== 'ol') {
-      this.controller.editor.dispatchCommand(INSERT_ORDERED_LIST_COMMAND, null);
+      this.controller.editor.dispatchCommand(
+        INSERT_ORDERED_LIST_COMMAND,
+        undefined
+      );
     } else {
-      this.controller.editor.dispatchCommand(REMOVE_LIST_COMMAND, null);
+      this.controller.editor.dispatchCommand(REMOVE_LIST_COMMAND, undefined);
     }
   }
 
@@ -191,13 +185,9 @@ export class LexicalToolbarBlockDropdownComponent
         const selection = $getSelection();
 
         if ($isRangeSelection(selection)) {
-          $wrapLeafNodesInElements(selection as RangeSelection, () =>
-            $createQuoteNode()
-          );
+          $wrapNodes(selection as RangeSelection, () => $createQuoteNode());
         }
       });
     }
   }
-
-  ngOnInit() {}
 }

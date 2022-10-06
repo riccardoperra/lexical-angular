@@ -45,7 +45,7 @@ export class LexicalRichTextComponent implements OnInit, OnDestroy {
 
   private registerRichText(): () => void {
     return mergeRegister(
-      registerRichText(this.controller.editor, this.initialEditorState),
+      registerRichText(this.controller.editor),
       registerDragonSupport(this.controller.editor)
     );
   }

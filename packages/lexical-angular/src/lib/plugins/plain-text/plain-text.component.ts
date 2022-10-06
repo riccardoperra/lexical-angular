@@ -44,7 +44,7 @@ export class LexicalPlainTextComponent implements OnInit, OnDestroy {
 
   private registerPlainText(): () => void {
     return mergeRegister(
-      registerPlainText(this.controller.editor, this.initialEditorState),
+      registerPlainText(this.controller.editor),
       registerDragonSupport(this.controller.editor)
     );
   }
