@@ -7,14 +7,7 @@ import {
   ViewContainerRef,
 } from '@angular/core';
 import {LexicalController} from '../../lexical.controller';
-import {
-  defer,
-  distinctUntilChanged,
-  map,
-  startWith,
-  Subject,
-  takeUntil,
-} from 'rxjs';
+import {distinctUntilChanged, map, startWith, Subject, takeUntil} from 'rxjs';
 import {$canShowPlaceholderCurry} from '@lexical/text';
 import {EditorState, LexicalEditor} from 'lexical';
 
@@ -55,7 +48,7 @@ export class LexicalPlaceholderDirective implements OnInit, OnDestroy {
   ): boolean {
     const computedEditorState = editorState ?? editor.getEditorState();
     return computedEditorState.read(
-      $canShowPlaceholderCurry(editor.isComposing())
+      $canShowPlaceholderCurry(editor.isComposing(), editor.isEditable())
     );
   }
 

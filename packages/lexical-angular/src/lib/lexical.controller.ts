@@ -1,11 +1,6 @@
 import {Injectable, OnDestroy} from '@angular/core';
-import {
-  CommandListener,
-  CommandListenerPriority,
-  LexicalCommand,
-  LexicalEditor,
-  UpdateListener,
-} from 'lexical';
+import {CommandListenerPriority, LexicalCommand, LexicalEditor} from 'lexical';
+import {CommandListener, UpdateListener} from 'lexical/LexicalEditor';
 import {Observable, ReplaySubject} from 'rxjs';
 import {LexicalComposerDirective} from './lexical-composer.directive';
 
@@ -23,7 +18,7 @@ export class LexicalController implements OnDestroy {
   constructor(private readonly lexical: LexicalComposerDirective) {}
 
   readonly readOnly$ = new Observable<boolean>(observer =>
-    this.editor.registerReadOnlyListener(readOnly => observer.next(readOnly))
+    this.editor.registerEditableListener(editable => observer.next(!editable))
   );
 
   readonly onUpdate$ = new Observable<Parameters<UpdateListener>[0]>(observer =>

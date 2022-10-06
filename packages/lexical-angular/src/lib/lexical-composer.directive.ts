@@ -20,7 +20,7 @@ export class LexicalComposerDirective implements OnInit {
 
   private initEditor(): void {
     this.editor = createEditor(this.lexicalInitialConfig);
-    const isReadOnly = this.lexicalInitialConfig?.readOnly ?? false;
-    this.editor.setReadOnly(isReadOnly);
+    const isEditable = this.lexicalInitialConfig?.editable ?? true;
+    this.editor.setEditable(isEditable);
   }
 }

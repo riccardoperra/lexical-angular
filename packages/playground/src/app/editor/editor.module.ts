@@ -7,7 +7,6 @@ import {LexicalToolbarBlockDropdownComponent} from './toolbar/block-dropdown/blo
 import {
   TuiButtonModule,
   TuiDataListModule,
-  TuiDropdownControllerModule,
   TuiDropdownModule,
   TuiHintModule,
   TuiHostedDropdownModule,
@@ -32,7 +31,6 @@ import {TuiAutoFocusModule} from '@taiga-ui/cdk';
     TuiDropdownModule,
     TuiButtonModule,
     TuiHostedDropdownModule,
-    TuiDropdownControllerModule,
     TuiDataListModule,
     FormsModule,
     TuiSelectModule,
