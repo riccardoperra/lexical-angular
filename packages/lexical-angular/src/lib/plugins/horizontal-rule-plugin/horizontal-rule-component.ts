@@ -21,12 +21,13 @@ import {
 } from 'lexical';
 import {BehaviorSubject, map, merge, Observable, Unsubscribable} from 'rxjs';
 import {LexicalController} from '../../lexical.controller';
+import {NODE_KEY_TOKEN} from '../../lexical.module';
 import {AngularNode} from '../common/angular-node';
 import {$isHorizontalRuleNode} from './horizontal-rule-node';
 
 @Component({
   selector: 'horizontal-rule-node',
-  template: '<hr [className]="isSelected$ | async " />',
+  template: '<hr [className]="className$ | async " />',
   styles: [
     `
       hr {
@@ -50,25 +51,25 @@ import {$isHorizontalRuleNode} from './horizontal-rule-node';
   ],
 })
 export class HorizontalRuleComponent implements AngularNode, OnInit, OnDestroy {
-  @Input()
-  nodeKey!: NodeKey;
-  isSelected$$$ = new BehaviorSubject<boolean>(false);
-  isSelected$?: Observable<string>;
+  readonly isSelected$ = new BehaviorSubject<boolean>(false);
+  readonly className$: Observable<string>;
 
   listener: Unsubscribable | null = null;
 
   constructor(
+    @Inject(NODE_KEY_TOKEN)
+    readonly nodeKey: NodeKey,
     readonly controller: LexicalController,
     @Inject(ElementRef)
     private readonly elementRef: ElementRef<HTMLElement>
-  ) {}
+  ) {
+    this.className$ = merge(
+      this.isSelected$,
+      this.controller.isSelected(nodeKey)
+    ).pipe(map(isSelected => (isSelected ? 'selected' : '')));
+  }
 
   ngOnInit(): void {
-    this.isSelected$ = merge(
-      this.isSelected$$$,
-      this.controller.isSelected(this.nodeKey)
-    ).pipe(map(it => (it ? 'selected' : '')));
-
     const {editor} = this.controller;
 
     this.listener = {
@@ -78,7 +79,7 @@ export class HorizontalRuleComponent implements AngularNode, OnInit, OnDestroy {
           (event: MouseEvent) => {
             editor.update(() => {
               const hrElem = this.elementRef.nativeElement;
-              this.isSelected$$$.next(false);
+              this.isSelected$.next(false);
 
               if (event.target === hrElem.firstChild) {
                 let selection = $getSelection();
@@ -95,7 +96,7 @@ export class HorizontalRuleComponent implements AngularNode, OnInit, OnDestroy {
                 }
 
                 selection.add(this.nodeKey);
-                this.isSelected$$$.next(true);
+                this.isSelected$.next(true);
               }
             });
 
@@ -118,22 +119,20 @@ export class HorizontalRuleComponent implements AngularNode, OnInit, OnDestroy {
   }
 
   onDelete(payload: KeyboardEvent) {
-    if (this.isSelected$$$.value && $isNodeSelection($getSelection())) {
+    if (this.isSelected$.value && $isNodeSelection($getSelection())) {
       const event: KeyboardEvent = payload;
       event.preventDefault();
       const node = $getNodeByKey(this.nodeKey);
       if (!!node && $isHorizontalRuleNode(node)) {
         node.remove();
       }
-      this.isSelected$$$.next(false);
+      this.isSelected$.next(false);
     }
     return false;
   }
 
   ngOnDestroy(): void {
-    console.info(`${this.constructor.name} [#${this.nodeKey}] was destroyed`);
-
-    this.isSelected$$$.complete();
+    this.isSelected$.complete();
     this.listener?.unsubscribe();
   }
 }

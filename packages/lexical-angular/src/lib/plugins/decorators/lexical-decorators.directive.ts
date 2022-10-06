@@ -11,12 +11,12 @@ import {
   ComponentRef,
 } from '@angular/core';
 import {LexicalController} from '../../lexical.controller';
-import {Subject, Subscription} from 'rxjs';
+import {Subscription} from 'rxjs';
 import {AngularNode} from '../common/angular-node';
+import {NODE_KEY_TOKEN} from '../../lexical.module';
 
 @Directive({selector: '[lexicalDecorators]'})
 export class LexicalDecoratorsDirective implements OnInit, OnDestroy {
-  private readonly destroy$ = new Subject<void>();
   private subscriptions = new Subscription();
   private decoratedcomponentRef: ComponentRef<AngularNode>[] = [];
 
@@ -47,8 +47,12 @@ export class LexicalDecoratorsDirective implements OnInit, OnDestroy {
             const factory =
               this.resolver.resolveComponentFactory(angularDecorator);
 
-            const componentRef = factory.create(this.injector, [], element);
-            componentRef.instance.nodeKey = nodeKey;
+            const injector = Injector.create({
+              parent: this.injector,
+              providers: [{provide: NODE_KEY_TOKEN, useValue: nodeKey}],
+            });
+
+            const componentRef = factory.create(injector, [], element);
             this.app.attachView(componentRef.hostView);
 
             decoratedcomponentRef.push(componentRef);
@@ -64,8 +68,6 @@ export class LexicalDecoratorsDirective implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.destroy$.next();
-    this.destroy$.complete();
     this.subscriptions.unsubscribe();
   }
 }

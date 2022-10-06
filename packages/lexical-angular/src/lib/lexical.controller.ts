@@ -53,16 +53,6 @@ export class LexicalController implements OnDestroy {
     );
   }
 
-  clearSelected() {
-    this.editor.update(() => {
-      const selection = $getSelection();
-
-      if ($isNodeSelection(selection)) {
-        selection.clear();
-      }
-    });
-  }
-
   registerCommand<P>(
     command: LexicalCommand<P>,
     listener: CommandListener<P>,
