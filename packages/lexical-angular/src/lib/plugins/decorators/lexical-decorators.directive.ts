@@ -5,10 +5,10 @@ import {
   Inject,
   ViewContainerRef,
   Type,
-  ComponentFactoryResolver,
   Injector,
   ApplicationRef,
   ComponentRef,
+  createComponent,
 } from '@angular/core';
 import {LexicalController} from '../../lexical.controller';
 import {Subscription} from 'rxjs';
@@ -22,7 +22,6 @@ export class LexicalDecoratorsDirective implements OnInit, OnDestroy {
 
   constructor(
     private readonly controller: LexicalController,
-    private resolver: ComponentFactoryResolver,
     private injector: Injector,
     private app: ApplicationRef,
     @Inject(ViewContainerRef)
@@ -44,15 +43,20 @@ export class LexicalDecoratorsDirective implements OnInit, OnDestroy {
 
           if (element !== null) {
             this.viewContainerRef.clear();
-            const factory =
-              this.resolver.resolveComponentFactory(angularDecorator);
 
             const injector = Injector.create({
               parent: this.injector,
               providers: [{provide: NODE_KEY_TOKEN, useValue: nodeKey}],
             });
 
-            const componentRef = factory.create(injector, [], element);
+            const environmentInjector = this.app.injector;
+
+            const componentRef = createComponent(angularDecorator, {
+              hostElement: element,
+              environmentInjector: environmentInjector,
+              elementInjector: injector
+            });
+
             this.app.attachView(componentRef.hostView);
 
             decoratedcomponentRef.push(componentRef);
