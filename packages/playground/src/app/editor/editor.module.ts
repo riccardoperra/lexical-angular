@@ -11,6 +11,7 @@ import {
   TuiHintModule,
   TuiHostedDropdownModule,
   TuiLinkModule,
+  TuiSvgModule,
   TuiTextfieldControllerModule,
   TuiWrapperModule,
 } from '@taiga-ui/core';
@@ -43,6 +44,7 @@ import {TuiAutoFocusModule} from '@taiga-ui/cdk';
     TuiAutoFocusModule,
     TuiWrapperModule,
     TuiLinkModule,
+    TuiSvgModule
   ],
   exports: [PlaygroundEditorComponent],
   declarations: [

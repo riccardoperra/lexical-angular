@@ -109,6 +109,26 @@
 
   <div class='divider'></div>
 
+  <div class="inline-flex items-center" (tuiActiveZoneChange)="onActiveZone($event)">
+    <tui-hosted-dropdown tuiDropdownAlign="left" [(open)]="open" [content]="insertOptionsTpl">
+      <button type="button"  class="toolbar-item block-controls">
+        <tui-svg src="tuiIconPlus"></tui-svg>
+        Insert
+        <tui-svg src="tuiIconChevronDown"></tui-svg>
+      </button>
+    </tui-hosted-dropdown>
+    <ng-template #insertOptionsTpl>
+      <tui-data-list class="dropdown">        
+        <button *ngFor="let item of insertOptions" tuiOption (click)="executeCommand(item.command)" class="item">
+          <tui-svg [src]="item.icon"></tui-svg>
+          <span class="text">{{ item.label }}</span>
+        </button>
+      </tui-data-list>
+    </ng-template>
+  </div>
+
+  <div class='divider'></div>
+
   <button class='toolbar-item' tuiHint='Left align' (click)="onAlign('left')">
     <i class='format left-align'></i>
   </button>

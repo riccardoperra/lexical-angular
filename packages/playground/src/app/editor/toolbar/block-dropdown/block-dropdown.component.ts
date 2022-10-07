@@ -1,4 +1,8 @@
-import {ChangeDetectionStrategy, Component, forwardRef} from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+} from '@angular/core';
 import {LexicalController} from 'lexical-angular';
 import {
   $createParagraphNode,
@@ -127,7 +131,9 @@ export class LexicalToolbarBlockDropdownComponent
       this.controller.editor.update(() => {
         const selection = $getSelection();
         if ($isRangeSelection(selection)) {
-          $wrapNodes(selection as RangeSelection, () => $createParagraphNode());
+          $wrapNodes(selection as RangeSelection, () =>
+            $createParagraphNode()
+          );
         }
       });
     }
@@ -185,7 +191,9 @@ export class LexicalToolbarBlockDropdownComponent
         const selection = $getSelection();
 
         if ($isRangeSelection(selection)) {
-          $wrapNodes(selection as RangeSelection, () => $createQuoteNode());
+          $wrapNodes(selection as RangeSelection, () =>
+            $createQuoteNode()
+          );
         }
       });
     }

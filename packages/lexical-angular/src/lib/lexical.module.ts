@@ -1,4 +1,4 @@
-import {NgModule} from '@angular/core';
+import {InjectionToken, NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {LexicalComposerDirective} from './lexical-composer.directive';
 import {LexicalAutofocusPluginModule} from './plugins/autofocus';
@@ -11,6 +11,10 @@ import {LexicalLinkPluginModule} from './plugins/link';
 import {LexicalClearEditorPluginModule} from './plugins/clear';
 import {LexicalHistoryPluginModule} from './plugins/history';
 import {LexicalControlValueAccessorPluginModule} from './plugins/control-value-accessor';
+import {LexicalHorizontalRulePluginModule} from './plugins/horizontal-rule-plugin';
+import {LexicalDecoratorsPluginModule} from './plugins/decorators/lexical-decorators.module';
+
+export const NODE_KEY_TOKEN = new InjectionToken('NODE_KEY');
 
 const PLUGINS = [
   LexicalAutofocusPluginModule,
@@ -23,6 +27,8 @@ const PLUGINS = [
   LexicalPlaceholderPluginModule,
   LexicalPlainTextPluginModule,
   LexicalRichTextPluginModule,
+  LexicalDecoratorsPluginModule,
+  LexicalHorizontalRulePluginModule,
 ];
 
 @NgModule({

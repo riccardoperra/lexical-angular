@@ -6,6 +6,8 @@
   "scripts": {
     "nx": "nx",
     "postinstall": "ngcc --properties es2015 browser module main",
+    "start": "npm run start:playground",
+    "build:lib": "nx build lexical-angular",
     "start:playground": "nx serve playground",
     "build:playground": "nx build",
     "test": "nx test"

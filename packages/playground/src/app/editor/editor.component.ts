@@ -8,7 +8,7 @@ import {
 import {AutoLinkNode, LinkNode} from '@lexical/link';
 import {ListItemNode, ListNode} from '@lexical/list';
 import {HeadingNode, QuoteNode} from '@lexical/rich-text';
-import {LexicalComposerConfig} from 'lexical-angular';
+import {HorizontalRuleNode, LexicalComposerConfig} from 'lexical-angular';
 import {editorTheme} from './theme';
 import {FormControl} from '@angular/forms';
 
@@ -46,6 +46,7 @@ export class PlaygroundEditorComponent implements OnInit {
       // PollNode,
       // StickyNode,
       // ImageNode,
+      HorizontalRuleNode
     ],
   };
 
