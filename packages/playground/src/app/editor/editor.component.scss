@@ -1,3 +1,8 @@
+.editor {
+  height: 100%;
+  position: relative;
+}
+
 .ContentEditable__root {
   min-height: 150px;
   border: 0;
@@ -290,7 +295,7 @@
   width: auto;
 
   &:not(._focused):not(._hovered) {
-    tui-wrapper[data-appearance='textfield'] {
+    tui-wrapper[data-appearance="textfield"] {
       box-shadow: none;
 
       &::after {

@@ -8,7 +8,7 @@ import {
 import {AutoLinkNode, LinkNode} from '@lexical/link';
 import {ListItemNode, ListNode} from '@lexical/list';
 import {HeadingNode, QuoteNode} from '@lexical/rich-text';
-import {HorizontalRuleNode, LexicalComposerConfig} from 'lexical-angular';
+import {HorizontalRuleNode, LexicalComposerConfig, OverflowNode} from 'lexical-angular';
 import {editorTheme} from './theme';
 import {FormControl} from '@angular/forms';
 
@@ -22,6 +22,7 @@ import {FormControl} from '@angular/forms';
 export class PlaygroundEditorComponent implements OnInit {
   @Input()
   richText = true;
+  characterLimit = 10;
 
   config: LexicalComposerConfig = {
     namespace: 'PlaygroundEditor',
@@ -42,7 +43,7 @@ export class PlaygroundEditorComponent implements OnInit {
       // CodeHighlightNode,
       AutoLinkNode,
       LinkNode,
-      // OverflowNode,
+      OverflowNode,
       // PollNode,
       // StickyNode,
       // ImageNode,

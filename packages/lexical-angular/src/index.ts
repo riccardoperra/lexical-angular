@@ -14,3 +14,5 @@ export * from './lib/plugins/plain-text';
 export * from './lib/plugins/rich-text';
 export * from './lib/plugins/decorators';
 export * from './lib/plugins/horizontal-rule-plugin';
+export * from './lib/plugins/overflow';
+export * from './lib/plugins/character-limit';
