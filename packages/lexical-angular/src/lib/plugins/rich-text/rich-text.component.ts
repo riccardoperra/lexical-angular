@@ -25,6 +25,7 @@ export type LexicalRichTextInitialState =
     <ng-content select="[lexicalContentEditable]"></ng-content>
     <ng-content select="[lexicalPlaceholder]"></ng-content>
     <ng-content select="[lexicalDecorators]"></ng-content>
+    <ng-content select="lexical-character-limit"></ng-content>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

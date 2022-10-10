@@ -1,8 +1,6 @@
 import {Injectable, OnDestroy} from '@angular/core';
 import {
   $getNodeByKey,
-  $getSelection,
-  $isNodeSelection,
   CLICK_COMMAND,
   CommandListenerPriority,
   COMMAND_PRIORITY_LOW,
