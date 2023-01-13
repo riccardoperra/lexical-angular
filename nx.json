@@ -1,16 +1,11 @@
 {
+  "targetDefaults": {
+    "build": {
+      "dependsOn": ["^build"],
+      "inputs": ["production", "^production"]
+    }
+  },
   "extends": "@nrwl/workspace/presets/core.json",
-  "implicitDependencies": {
-    "package.json": {
-      "dependencies": "*",
-      "devDependencies": "*"
-    },
-    ".eslintrc.json": "*"
-  },
-  "workspaceLayout": {
-    "appsDir": "packages",
-    "libsDir": "packages"
-  },
   "npmScope": "lexical-angular",
   "affected": {
     "defaultBase": "main"
@@ -53,5 +48,10 @@
       }
     }
   },
-  "defaultProject": "playground"
+  "defaultProject": "playground",
+  "namedInputs": {
+    "default": ["{projectRoot}/**/*", "sharedGlobals"],
+    "sharedGlobals": [],
+    "production": ["default"]
+  }
 }
