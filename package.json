@@ -36,7 +36,7 @@
     "@angular-eslint/eslint-plugin": "15.0.0",
     "@angular-eslint/eslint-plugin-template": "15.0.0",
     "@angular-eslint/template-parser": "15.0.0",
-    "@angular/cli": "~13.3.0",
+    "@angular/cli": "~15.0.0",
     "@angular/compiler-cli": "15.1.0",
     "@angular/language-service": "15.1.0",
     "@changesets/changelog-github": "^0.4.4",
@@ -98,4 +98,3 @@
     "zone.js": "~0.11.4"
   }
 }
-
