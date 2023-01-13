@@ -54,7 +54,7 @@ export class LexicalPlaceholderDirective implements OnInit, OnDestroy {
   ): boolean {
     const computedEditorState = editorState ?? editor.getEditorState();
     return computedEditorState.read(
-      $canShowPlaceholderCurry(editor.isComposing(), editor.isEditable())
+      $canShowPlaceholderCurry(editor.isComposing())
     );
   }
 
